@@ -14,7 +14,9 @@ export default function Navbar() {
     <nav className="bg-gray-900 text-white px-4 py-3">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
         <div className="text-lg font-semibold">
-          <Link href="/">The Morris</Link>
+          <Link className="m-0 p-0" href="/">
+            The Morris
+          </Link>
         </div>
 
         <HamburgerButton isOpen={isOpen} toggle={toggle} />
