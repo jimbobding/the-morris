@@ -1,6 +1,14 @@
 // src/app/layout.tsx
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
+import { Hanken_Grotesk } from "next/font/google";
+
+const hankenGrotesk = Hanken_Grotesk({
+  subsets: ["latin"],
+  weight: ["100", "400", "700"], // choose weights you need
+  style: ["normal", "italic"], // optional, if you want italics
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
@@ -9,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className={hankenGrotesk.className}>
         <Navbar />
         <main>{children}</main>
       </body>

@@ -1,0 +1,27 @@
+export const venueData = {
+  pub: {
+    name: "The Pub",
+    description: "Cozy neighborhood pub on the ground floor.",
+    image:
+      "/images/venue-images/pub/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png",
+    bgImage:
+      "/images/venue-images/pub/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg",
+    cpImage: "", // add this
+  },
+  "cocktail-bar": {
+    name: "Cocktail Bar",
+    description: "Bespoke cocktails on the first floor.",
+    image:
+      "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_DARK YELLOW.png",
+    bgImage:
+      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
+    cpImage:
+      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
+  },
+  "venue-hire": {
+    name: "Private Hire Room",
+    description: "Private event room on the second floor.",
+    bgImage: "",
+    cpImage: "", // add this
+  },
+} as const;

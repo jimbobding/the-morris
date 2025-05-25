@@ -1,15 +1,21 @@
-export default function CocktailBarContent({ bgImage }: { bgImage: string }) {
+// CocktailBarContent.tsx
+import React from "react";
+
+interface Props {
+  cpImage: string;
+}
+
+const CocktailBarContent: React.FC<Props> = ({ cpImage }) => {
+  console.log("cpImage URL:", cpImage); // Check if this logs correctly
+
   return (
     <div
-      className="min-h-screen bg-cover bg-center p-8 flex flex-col items-center text-center "
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
+      className="w-full h-96 bg-cover bg-center flex items-center justify-center text-white"
+      style={{ backgroundImage: `url("${cpImage}")` }}
     >
-      <h2 className="text-2xl font-semibold text-white">Signature Cocktails</h2>
-      <p className="mt-2 text-gray-100 max-w-xl">
-        Try our seasonal cocktail menu handcrafted by our mixologists.
-      </p>
+      <h2 className="text-3xl font-bold">Cocktail Bar Feature Section</h2>
     </div>
   );
-}
+};
+
+export default CocktailBarContent;

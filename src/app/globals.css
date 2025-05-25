@@ -22,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Hanken Grotesk", sans-serif !important;
   padding: 0;
   margin: 0;
 }
