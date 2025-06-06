@@ -29,7 +29,7 @@ export default function VenuePage() {
         <img
           src={venue.image}
           alt={venue.name}
-          className="max-w-md rounded shadow-md mb-6"
+          className="max-w-md rounded mb-6"
         />
         <p className="text-lg text-gray-700">{venue.description}</p>
       </div>

@@ -12,9 +12,9 @@ export const venueData = {
     name: "Cocktail Bar",
     description: "Bespoke cocktails on the first floor.",
     image:
-      "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_DARK YELLOW.png",
+      "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png",
     bgImage:
-      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
+      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg",
     cpImage:
       "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
   },
