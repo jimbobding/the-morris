@@ -6,7 +6,8 @@ export const venueData = {
       "/images/venue-images/pub/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png",
     bgImage:
       "/images/venue-images/pub/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg",
-    cpImage: "", // add this
+    cpImage: "",
+    icon: "🍺",
   },
   "cocktail-bar": {
     name: "Cocktail Bar",
@@ -17,11 +18,13 @@ export const venueData = {
       "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg",
     cpImage:
       "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
+    icon: "🍸",
   },
   "venue-hire": {
     name: "Private Hire Room",
     description: "Private event room on the second floor.",
     bgImage: "",
-    cpImage: "", // add this
+    cpImage: "",
+    icon: "", // ✅ add this
   },
 } as const;

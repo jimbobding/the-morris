@@ -1,36 +1,56 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Home = () => {
   const venues = [
-    { id: "pub", label: "Ground Floor Pub" },
-    { id: "cocktail-bar", label: "First Floor Cocktail Bar" },
-    { id: "venue-hire", label: "Private Hire Room" },
+    {
+      id: "pub",
+      label: "Ground Floor Pub",
+      logo: "/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_TEAL.png",
+    },
+    {
+      id: "cocktail-bar",
+      label: "First Floor Cocktail Bar",
+      logo: "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT GREEN.png",
+    },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center">
-      <h1 className="text-4xl font-bold text-center">
-        Welcome to The Morris Appple
+    <div
+      className="min-h-screen bg-cover bg-center flex flex-col justify-center items-center"
+      style={{
+        backgroundImage:
+          "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT GREEN.png", // replace with your actual background path
+      }}
+    >
+      <Image
+        src="/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT GREEN.png" // Change this path to your actual image
+        alt="The Morris Building"
+        width={600}
+        height={300}
+        className="mb-8 rounded shadow-lg"
+      />
+      <h1 className="text-4xl font-bold text-white text-center mb-8">
+        Welcome to The Morris
       </h1>
-      <p className="mt-4 text-lg">This is your Home page.</p>
 
-      <div className="p-4 w-full max-w-6xl">
-        <h1 className="text-3xl font-bold mb-6">Welcome to The Morris</h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {venues.map(({ id, label }) => (
-            <div
-              key={id}
-              className="bg-blue-700 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow"
-            >
-              <h2 className="text-xl font-semibold mb-3">{label}</h2>
-              <Link className="" href={`/venues/${id}`}>
-                Explore
-              </Link>
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 px-6">
+        {venues.map(({ id, label, logo }) => (
+          <Link
+            key={id}
+            href={`/venues/${id}`}
+            className="transition duration-300 transform hover:scale-105 hover:shadow-[0_0_30px_rgba(255,255,255,0.8)] bg-white rounded-2xl p-6 shadow-md"
+          >
+            <Image
+              src={logo}
+              alt={label}
+              width={300}
+              height={150}
+              className="object-contain mx-auto"
+            />
+          </Link>
+        ))}
       </div>
     </div>
   );
