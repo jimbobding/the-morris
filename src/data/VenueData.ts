@@ -1,30 +1,104 @@
+const PUB_BASE = "/images/venue-images/pub";
+const COCKTAIL_BASE = "/images/venue-images/cocktail-bar";
+const HIRE_BASE = "/images/venue-images/venue-hire";
+
+const PLACEHOLDER = "/menus/placeholder.pdf";
+
 export const venueData = {
   pub: {
     name: "The Pub",
+    venueType: "pub",
     description: "Cozy neighborhood pub on the ground floor.",
-    image:
-      "/images/venue-images/pub/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png",
-    bgImage:
-      "/images/venue-images/pub/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg",
+    image: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png`,
+    bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
     cpImage: "",
     icon: "🍺",
+    blurb:
+      "Cozy pub in the middle of Manchester! The Morris is your quintessential Manchester pub in the heart of the Northern Quarter. Come and grab a table or a stool at the bar to sample our locally brewed Mancunian beers.",
+    gallery: [
+      `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_1964.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_1966.jpeg`,
+    ],
+    menu: {
+      food: PLACEHOLDER,
+      drinks: PLACEHOLDER,
+    },
+    menuBackground: `${PUB_BASE}/other-assets/IMG_2031.jpeg`,
+    menuDescription:
+      "A proper pub menu with traditional snacks and locally brewed ales.",
+    menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
+    menuGallery: [
+      `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_1964.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_1966.jpeg`,
+    ],
+    hours: "Mon–Sun: 12pm – 11.30pm",
+    contact: {
+      phone: "0161 123 4567",
+      email: "pub@themorris.com",
+    },
   },
+
   "cocktail-bar": {
     name: "Cocktail Bar",
+    venueType: "cocktail",
     description: "Bespoke cocktails on the first floor.",
-    image:
-      "/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png",
-    bgImage:
-      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg",
-    cpImage:
-      "/images/venue-images/cocktail-bar/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg",
+    image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png`,
+    bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
+    cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
     icon: "🍸",
+    blurb:
+      "Elegant and intimate cocktail experience on the first floor. Sip on our bespoke creations made with premium spirits and fresh ingredients.",
+    gallery: [
+      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2045.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
+    ],
+    menu: {
+      food: PLACEHOLDER,
+      drinks: PLACEHOLDER,
+    },
+    menuBackground: `${COCKTAIL_BASE}/other-assets/morris-menu.jpeg`,
+    menuDescription:
+      "Sip on handcrafted cocktails with seasonal flavors and retro flair.",
+    menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
+    menuGallery: [
+      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
+    ],
+    hours: "Wed–Sat: 5pm – Late",
+    contact: {
+      phone: "0161 765 4321",
+      email: "cocktails@themorris.com",
+    },
   },
+
   "venue-hire": {
     name: "Private Hire Room",
+    venueType: "private-hire",
     description: "Private event room on the second floor.",
-    bgImage: "",
+    image: `${HIRE_BASE}/logos/venue-hire-logo.png`,
+    bgImage: `${HIRE_BASE}/backgrounds/bg.jpg`,
     cpImage: "",
-    icon: "", // ✅ add this
+    icon: "🎉",
+    blurb:
+      "Host your private parties, meetings or events in our beautifully styled hire space. Tailored packages available.",
+    gallery: [
+      `${HIRE_BASE}/gallery/hire1.jpg`,
+      `${HIRE_BASE}/gallery/hire2.jpg`,
+      `${HIRE_BASE}/gallery/hire3.jpg`,
+    ],
+    menu: {
+      food: PLACEHOLDER,
+      drinks: PLACEHOLDER,
+    },
+    menuDescription: "hire me.",
+    hours: "Available by booking only",
+    contact: {
+      email: "events@themorris.com",
+      phone: "0161 225 6789",
+    },
   },
 } as const;

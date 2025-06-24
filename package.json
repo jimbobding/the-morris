@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tailwind": "npx tailwindcss -i ./src/styles/globals.css -o ./src/styles/output.css --watch"
   },
   "dependencies": {
     "framer-motion": "^12.16.0",
@@ -22,7 +23,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.1.10",
     "typescript": "^5"
   }
 }

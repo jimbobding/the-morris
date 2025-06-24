@@ -2,55 +2,82 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import CocktailBarContent from "@/components/CocktailBarContent"; // adjust path as needed
+import MenuSection from "@/components/MenuSection";
+import OpeningHours from "@/components/OpeningHours";
+import ContactInfo from "@/components/ContactInfo";
+import VenueHeader from "@/components/VenueHeader";
+import GallerySection from "@/components/GallerySection";
 import { venueData } from "@/data/VenueData";
-import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 export default function VenuePage() {
   const { venueId } = useParams();
   const venue = venueData[venueId as keyof typeof venueData];
-  console.log("Background image URL:", venue?.bgImage);
 
   if (!venue) {
     return (
       <div className="p-6 text-center text-red-600">
         <h1 className="text-2xl font-bold">Venue not found</h1>
-        <p>Check the URL or go back to the homepage.</p>
       </div>
     );
   }
 
+  const getVenueBorderColor = (type: string) => {
+    switch (type) {
+      case "cocktail":
+        return "#90EE90"; // Light green for cocktail bar
+      case "private-hire":
+        return "#00CED1";
+      case "pub":
+      default:
+        return "#FF69B4";
+    }
+  };
+  console.log("venue:", venue);
   return (
     <>
-      <div
-        className="min-h-screen bg-cover bg-center p-8 flex flex-col items-center text-center"
-        style={{ backgroundImage: `url("${venue.bgImage}")` }}
-      >
-        <h1 className="text-4xl font-bold mb-4">{venue.name}</h1>
+      <VenueHeader
+        name={venue.name}
+        description={venue.description}
+        image={venue.image}
+        bgImage={venue.bgImage}
+        icon={venue.icon}
+      />
 
-        <img
-          src={venue.image}
-          alt={venue.name}
-          className="max-w-md rounded mb-6"
-        />
+      <GallerySection
+        title={`Morris: ${venue.name}`}
+        blurb={venue.blurb}
+        bgImage={venue.bgImage}
+        images={venue.gallery}
+        hours={venue.hours}
+        contact={venue.contact}
+      />
 
-        <p className="text-lg text-gray-700">{venue.description}</p>
+      {/* <MenuSection food={venue.menu?.food} drinks={venue.menu?.drinks} /> */}
+      {/* <MenuSection
+        food={venue.menu?.food}
+        drinks={venue.menu?.drinks}
+        backgroundImage={venue.menuBackground}
+        venueType={venue.venueType}
+        menuDescription={venue.menuDescription}
+      /> */}
+      <MenuSection
+        food={venue.menu?.food}
+        drinks={venue.menu?.drinks}
+        backgroundImage={venue.menuBackground}
+        menuDescription={venue.menuDescription}
+        menuGallery={venue.menuGallery}
+        menuGalleryBackground={venue.menuGalleryBackground}
+        venueData={{
+          type: venue.venueType, // ✅ Corrected line
+          borderColor: getVenueBorderColor(venue.venueType),
+        }}
+      />
 
-        {venue.icon && (
-          <motion.div
-            animate={{ y: [-10, 0, -10] }}
-            transition={{ repeat: Infinity, duration: 3 }}
-            className="text-6xl mt-4"
-          >
-            {venue.icon}
-          </motion.div>
-        )}
-      </div>{" "}
-      {/* ✅ this was missing */}
-      {/* Conditionally render custom content */}
-      {venueId === "cocktail-bar" && venue.cpImage && (
-        <CocktailBarContent cpImage={venue.cpImage} />
-      )}
+      <OpeningHours hours={venue.hours} />
+
+      <ContactInfo phone={venue.contact.phone} email={venue.contact.email} />
+      <Footer />
     </>
   );
 }
