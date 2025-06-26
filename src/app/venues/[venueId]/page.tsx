@@ -30,7 +30,7 @@ export default function VenuePage() {
         return "#00CED1";
       case "pub":
       default:
-        return "#FF69B4";
+        return "#FFFDD0"; // Light cream for pub
     }
   };
   console.log("venue:", venue);

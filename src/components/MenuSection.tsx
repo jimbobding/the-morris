@@ -45,7 +45,7 @@ export default function MenuSection({
   return (
     <>
       {/* SECTION WITH BACKGROUND IMAGE */}
-      <section className="relative min-h-screen px-4 py-20 overflow-hidden text-white text-center flex flex-col justify-center items-center">
+      <section className="relative min-h-screen px-4 py-20 text-white text-center flex items-center justify-center">
         {backgroundImage && (
           <Image
             src={backgroundImage}
@@ -56,10 +56,10 @@ export default function MenuSection({
             priority
           />
         )}
-        <div className="absolute inset-0 bg-black/40 backdrop-blur-sm z-0" />
+        <div className="absolute inset-0 bg-black/40 -z-10" />
 
         <div
-          className="relative z-10 flex flex-col items-center space-y-10 border-8 rounded-3xl p-8 max-w-5xl mx-auto"
+          className="relative w-full max-w-7xl mx-auto border-8 rounded-3xl py-16 px-12 bg-black/40 space-y-12"
           style={{ borderColor: resolvedBorderColor }}
         >
           <h2
@@ -69,33 +69,31 @@ export default function MenuSection({
           </h2>
 
           {food && (
-            <div>
-              <h3 className="text-2xl font-bold text-pink-200 uppercase tracking-wider mb-2">
-                Bar Snacks
-              </h3>
+            <div className="pt-6 pb-6">
               <a
                 href={food}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-200 underline underline-offset-[6px] decoration-2 hover:text-white transition"
               >
-                View PDF
+                <h3 className="text-2xl font-bold text-pink-200 uppercase tracking-wider mb-2">
+                  Bar Snacks
+                </h3>
               </a>
             </div>
           )}
 
           {drinks && (
-            <div>
-              <h3 className="text-2xl font-bold text-green-200 uppercase tracking-wider mb-2">
-                Drinks
-              </h3>
+            <div className="pt-6 pb-6">
               <a
                 href={drinks}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-yellow-200 underline underline-offset-[6px] decoration-2 hover:text-white transition"
               >
-                View PDF
+                <h3 className="text-2xl font-bold text-green-200 uppercase tracking-wider mb-2">
+                  Drinks
+                </h3>
               </a>
             </div>
           )}
@@ -117,7 +115,7 @@ export default function MenuSection({
         <div className="absolute inset-0 bg-black/40 -z-10" />
 
         <div
-          className="relative max-w-6xl mx-auto border-8 rounded-3xl p-8 bg-black/40"
+          className="relative w-full max-w-7xl mx-auto border-8 rounded-3xl py-16 px-12 bg-black/40"
           style={{ borderColor: resolvedBorderColor }}
         >
           {menuDescription && (
@@ -131,15 +129,14 @@ export default function MenuSection({
               {menuGallery.map((src, index) => (
                 <div
                   key={index}
-                  className={`overflow-hidden rounded-2xl shadow-xl border-4`}
-                  // style={{ borderColor: resolvedBorderColor }}
+                  className="overflow-hidden rounded-2xl shadow-xl border-4 aspect-[3/3] relative"
                 >
                   <Image
                     src={src}
                     alt={`Gallery image ${index + 1}`}
-                    width={600}
-                    height={400}
-                    className="object-cover w-full h-64 hover:scale-105 transition-transform duration-500"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
               ))}

@@ -64,9 +64,9 @@ export const venueData = {
       "Sip on handcrafted cocktails with seasonal flavors and retro flair.",
     menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
     menuGallery: [
-      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2320.jpg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2883.jpg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2887.jpg`,
     ],
     hours: "Wed–Sat: 5pm – Late",
     contact: {
