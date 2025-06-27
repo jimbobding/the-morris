@@ -53,14 +53,6 @@ export default function VenuePage() {
         contact={venue.contact}
       />
 
-      {/* <MenuSection food={venue.menu?.food} drinks={venue.menu?.drinks} /> */}
-      {/* <MenuSection
-        food={venue.menu?.food}
-        drinks={venue.menu?.drinks}
-        backgroundImage={venue.menuBackground}
-        venueType={venue.venueType}
-        menuDescription={venue.menuDescription}
-      /> */}
       <MenuSection
         food={venue.menu?.food}
         drinks={venue.menu?.drinks}

@@ -10,6 +10,8 @@ export const venueData = {
     venueType: "pub",
     description: "Cozy neighborhood pub on the ground floor.",
     image: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png`,
+    hoverLogo: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png"
+      `,
     bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
     cpImage: "",
     icon: "🍺",
@@ -45,6 +47,8 @@ export const venueData = {
     venueType: "cocktail",
     description: "Bespoke cocktails on the first floor.",
     image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png`,
+    hoverLogo: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT YELLOW.png"
+     `,
     bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
     cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
     icon: "🍸",
