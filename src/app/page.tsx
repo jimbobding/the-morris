@@ -12,13 +12,13 @@ const Home = () => {
         <div
           className="bg-cover bg-center h-full w-full"
           style={{
-            backgroundImage: `url(${PUB_BASE}/backgrounds/SOLO%20DIAMOND%20BACKGROUND%20PATTERN_LINEN.jpg)`,
+            backgroundImage: `url(${PUB_BASE}/backgrounds/SOLO%20DIAMOND%20BACKGROUND%20PATTERN_TEAL.jpg)`,
           }}
         />
         <div
           className="bg-cover bg-center h-full w-full"
           style={{
-            backgroundImage: `url(${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20PATTERN_LIGHT%20GREEN.jpg)`,
+            backgroundImage: `url(${PUB_BASE}/backgrounds/SOLO%20DIAMOND%20BACKGROUND%20PATTERN_TEAL.jpg)`,
           }}
         />
       </div>
@@ -59,22 +59,21 @@ const Home = () => {
         </p>
 
         {/* Venue Cards */}
-        {/* Venue Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl px-4">
           {venues.map(({ id, label, logo, hoverLogo }) => (
             <Link
               key={id}
               href={`/venues/${id}`}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-md transition-all duration-300 hover:scale-105"
+              className="group relative bg-black rounded-2xl overflow-hidden shadow-md transition-all duration-500 hover:scale-105"
             >
-              <div className="relative h-56 flex items-center justify-center group-hover:bg-black transition-colors duration-300 p-6">
+              <div className="relative h-56 flex items-center justify-center group-hover:bg-white transition-colors duration-300 ease-in-out p-6">
                 {/* Normal logo */}
                 <Image
                   src={logo}
                   alt={label}
                   width={300}
                   height={150}
-                  className="object-contain max-h-full transition-opacity duration-300 group-hover:opacity-0"
+                  className="absolute inset-0 object-contain m-auto transition-opacity duration-300 ease-in-out group-hover:opacity-0 will-change-opacity"
                 />
                 {/* Hover logo */}
                 <Image
@@ -82,7 +81,7 @@ const Home = () => {
                   alt={`${label} hover`}
                   width={300}
                   height={150}
-                  className="object-contain max-h-full absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  className="absolute inset-0 object-contain m-auto opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 will-change-opacity"
                 />
               </div>
             </Link>

@@ -10,29 +10,29 @@ export const venueData = {
     venueType: "pub",
     description: "Cozy neighborhood pub on the ground floor.",
     image: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png`,
-    hoverLogo: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png"
-      `,
+    hoverLogo: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png`,
     bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
+    galleryBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
     cpImage: "",
     icon: "🍺",
     blurb:
       "Cozy pub in the middle of Manchester! The Morris is your quintessential Manchester pub in the heart of the Northern Quarter. Come and grab a table or a stool at the bar to sample our locally brewed Mancunian beers.",
     gallery: [
       `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
-      `${PUB_BASE}/other-assets/IMG_1964.jpeg`,
-      `${PUB_BASE}/other-assets/IMG_1966.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_2282.JPG`,
+      `${PUB_BASE}/other-assets/IMG_2031.jpeg`,
     ],
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
     },
-    menuBackground: `${PUB_BASE}/other-assets/IMG_2031.jpeg`,
+    menuBackground: `${PUB_BASE}/other-assets/IMG_2839.jpg`,
     menuDescription:
       "A proper pub menu with traditional snacks and locally brewed ales.",
     menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
     menuGallery: [
-      `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
-      `${PUB_BASE}/other-assets/IMG_1964.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_2122.jpeg`,
+      `${PUB_BASE}/other-assets/IMG_2274.JPG`,
       `${PUB_BASE}/other-assets/IMG_1966.jpeg`,
     ],
     hours: "Mon–Sun: 12pm – 11.30pm",
@@ -47,9 +47,11 @@ export const venueData = {
     venueType: "cocktail",
     description: "Bespoke cocktails on the first floor.",
     image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png`,
-    hoverLogo: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT YELLOW.png"
-     `,
+    hoverLogo: `${COCKTAIL_BASE}/logos/THE%20MORRIS_COCKTAIL%20BAR%20LOGO_LIGHT%20YELLOW.png`,
+
     bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
+    galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
+
     cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
     icon: "🍸",
     blurb:

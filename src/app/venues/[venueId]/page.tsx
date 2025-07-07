@@ -8,7 +8,6 @@ import ContactInfo from "@/components/ContactInfo";
 import VenueHeader from "@/components/VenueHeader";
 import GallerySection from "@/components/GallerySection";
 import { venueData } from "@/data/VenueData";
-import Footer from "@/components/Footer";
 
 export default function VenuePage() {
   const { venueId } = useParams();
@@ -47,7 +46,7 @@ export default function VenuePage() {
       <GallerySection
         title={`Morris: ${venue.name}`}
         blurb={venue.blurb}
-        bgImage={venue.bgImage}
+        galleryBgImage={venue.galleryBgImage}
         images={venue.gallery}
         hours={venue.hours}
         contact={venue.contact}
@@ -61,7 +60,7 @@ export default function VenuePage() {
         menuGallery={venue.menuGallery}
         menuGalleryBackground={venue.menuGalleryBackground}
         venueData={{
-          type: venue.venueType, // ✅ Corrected line
+          type: venue.venueType,
           borderColor: getVenueBorderColor(venue.venueType),
         }}
       />
@@ -69,7 +68,6 @@ export default function VenuePage() {
       <OpeningHours hours={venue.hours} />
 
       <ContactInfo phone={venue.contact.phone} email={venue.contact.email} />
-      <Footer />
     </>
   );
 }

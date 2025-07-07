@@ -9,9 +9,9 @@ export const venues: Venue[] = [
   {
     id: "pub",
     label: "Ground Floor Pub",
-    logo: "/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_TEAL.png",
+    logo: "/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_LINEN.png",
     hoverLogo:
-      "/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_LINEN.png",
+      "/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_TEAL.png",
   },
   {
     id: "cocktail-bar",

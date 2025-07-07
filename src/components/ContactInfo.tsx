@@ -7,7 +7,7 @@ type ContactInfoProps = {
 
 export default function ContactInfo({ phone, email }: ContactInfoProps) {
   return (
-    <section className="bg-gray-100 text-black py-16 px-4">
+    <section className="bg-gray-100 text-black py-16 px-4" id="contact">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
         <div className="space-y-4 text-lg">

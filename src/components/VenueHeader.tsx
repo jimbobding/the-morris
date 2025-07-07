@@ -21,7 +21,7 @@ export default function VenueHeader({
 }: VenueHeaderProps) {
   return (
     <div
-      className="min-h-screen bg-cover bg-center p-8 flex flex-col items-center text-center"
+      className=" bg-cover bg-center p-8 flex flex-col items-center text-center"
       style={bgImage ? { backgroundImage: `url("${bgImage}")` } : undefined}
     >
       {image && (
