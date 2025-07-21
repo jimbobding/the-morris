@@ -4,7 +4,8 @@ import React from "react";
 import { useParams } from "next/navigation";
 import MenuSection from "@/components/MenuSection";
 import OpeningHours from "@/components/OpeningHours";
-import ContactInfo from "@/components/ContactInfo";
+
+import ContactInfoSection from "@/components/ContactInfo";
 import VenueHeader from "@/components/VenueHeader";
 import GallerySection from "@/components/GallerySection";
 import { venueData } from "@/data/VenueData";
@@ -32,7 +33,9 @@ export default function VenuePage() {
         return "#FFFDD0"; // Light cream for pub
     }
   };
-  console.log("venue:", venue);
+
+  console.log("venue contact:", venue?.contact);
+
   return (
     <>
       <VenueHeader
@@ -65,9 +68,15 @@ export default function VenuePage() {
         }}
       />
 
-      <OpeningHours hours={venue.hours} />
+      {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
+        <OpeningHours
+          venueType={venue.venueType}
+          hours={venue.hours}
+          openingHoursBgImage={venue.openingHoursBgImage}
+        />
+      )}
 
-      <ContactInfo phone={venue.contact.phone} email={venue.contact.email} />
+      {venue?.contact && <ContactInfoSection contact={venue.contact} />}
     </>
   );
 }

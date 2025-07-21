@@ -1,33 +1,68 @@
-import React from "react";
+import Image from "next/image";
 
-type ContactInfoProps = {
+type VenueContactData = {
   phone: string;
   email: string;
+  contactBackgroundImage?: string;
 };
 
-export default function ContactInfo({ phone, email }: ContactInfoProps) {
+type ContactInfoSectionProps = {
+  contact: VenueContactData;
+  borderColor?: string;
+};
+
+export default function ContactInfoSection({
+  contact,
+  borderColor = "#ffe680",
+}: ContactInfoSectionProps) {
+  const { phone, email, contactBackgroundImage } = contact;
+
   return (
-    <section className="bg-gray-100 text-black py-16 px-4" id="contact">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-        <div className="space-y-4 text-lg">
-          <p>📍 123 Venue Street, London, UK</p>
-          <p>
-            📞{" "}
-            <a href={`tel:${phone}`} className="text-blue-600 hover:underline">
-              {phone}
-            </a>
-          </p>
-          <p>
-            ✉️{" "}
-            <a
-              href={`mailto:${email}`}
-              className="text-blue-600 hover:underline"
-            >
-              {email}
-            </a>
-          </p>
-        </div>
+    <section className="relative min-h-[60vh] px-6 py-20 flex items-center justify-center">
+      {contactBackgroundImage && (
+        <>
+          <Image
+            src={contactBackgroundImage}
+            alt="Contact background"
+            fill
+            className="object-cover object-center -z-10"
+            quality={80}
+            priority
+          />
+          <div className="absolute inset-0 bg-black/50 -z-10" />
+        </>
+      )}
+
+      <div
+        className="relative bg-black/70 border-4 rounded-3xl p-10 text-center shadow-lg w-full max-w-xl"
+        style={{ borderColor }}
+      >
+        <h3
+          className="text-4xl font-bold mb-8 text-[#ffe680] tracking-wide"
+          style={{ fontFamily: "'Hanken Grotesk', sans-serif" }}
+        >
+          Contact Us
+        </h3>
+
+        <p className="text-xl mb-4 text-[#fff9e6]">
+          📞{" "}
+          <a
+            href={`tel:${phone}`}
+            className="underline hover:text-[#fff] transition-colors"
+          >
+            {phone}
+          </a>
+        </p>
+
+        <p className="text-xl text-[#fff9e6]">
+          📧{" "}
+          <a
+            href={`mailto:${email}`}
+            className="underline hover:text-[#fff] transition-colors"
+          >
+            {email}
+          </a>
+        </p>
       </div>
     </section>
   );
