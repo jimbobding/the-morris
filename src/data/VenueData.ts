@@ -77,7 +77,7 @@ export const venueData = {
     contact: {
       phone: "0161 765 4321",
       email: "cocktails@themorris.com",
-      contactBackgroundImage: `${COCKTAIL_BASE}/other-assets/IMG_2311.jpg`,
+      contactBackgroundImage: `${COCKTAIL_BASE}/other-assets/IMG_2264 (1).jpg`,
     },
 
     // ——— Branding & Logos ———
@@ -88,15 +88,15 @@ export const venueData = {
     bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
     galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
     cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
-    menuBackground: `${COCKTAIL_BASE}/other-assets/morris-menu.jpeg`,
+    menuBackground: `${COCKTAIL_BASE}/other-assets/IMG_2006.JPG`,
     menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
     openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
-    contactBackgroundImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
+    // contactBackgroundImage: `${COCKTAIL_BASE}/backgrounds/emerald07.jpg`,
 
     // ——— Gallery ———
     gallery: [
       `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2045.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/creamsoda01.jpg`,
       `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
     ],
 
@@ -108,9 +108,9 @@ export const venueData = {
     menuDescription:
       "Sip on handcrafted cocktails with seasonal flavors and retro flair.",
     menuGallery: [
-      `${COCKTAIL_BASE}/other-assets/IMG_2320.jpg`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2883.jpg`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2887.jpg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_3452.png`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2311.jpg`,
+      `${COCKTAIL_BASE}/other-assets/fruitsalad04.jpg`,
     ],
   },
 

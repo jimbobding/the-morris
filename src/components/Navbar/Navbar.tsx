@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // import here
 import { useNavbarToggle } from "../hooks/useNavbarToggle";
 import NavLinks from "./NavLinks";
 import HamburgerButton from "./HamburgerButton";
@@ -8,7 +9,14 @@ import MobileMenu from "./MobileMenu";
 
 export default function Navbar() {
   const { isOpen, toggle, close } = useNavbarToggle();
+  const pathname = usePathname();
 
+  // Extract venue slug from URL (e.g., /venues/pub)
+  const segments = pathname.split("/");
+  const targetSlug = segments[1] === "venues" ? segments[2] : "default";
+
+  console.log("Current pathname:", pathname);
+  console.log("Extracted targetSlug:", targetSlug);
   return (
     <nav className="bg-gray-900 text-white px-4 py-3">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -22,7 +30,7 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <ul className="hidden md:flex space-x-6 text-sm">
-          <NavLinks />
+          <NavLinks targetSlug={targetSlug} />
         </ul>
       </div>
 
