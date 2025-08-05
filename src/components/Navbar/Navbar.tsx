@@ -15,8 +15,6 @@ export default function Navbar() {
   const segments = pathname.split("/");
   const targetSlug = segments[1] === "venues" ? segments[2] : "default";
 
-  console.log("Current pathname:", pathname);
-  console.log("Extracted targetSlug:", targetSlug);
   return (
     <nav className="bg-gray-900 text-white px-4 py-3">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
