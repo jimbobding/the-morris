@@ -1,6 +1,6 @@
 const PUB_BASE = "/images/venue-images/pub";
 const COCKTAIL_BASE = "/images/venue-images/cocktail-bar";
-const HIRE_BASE = "/images/venue-images/venue-hire";
+// const HIRE_BASE = "/images/venue-images/venue-hire"; // commented out for now
 
 const PLACEHOLDER = "/menus/placeholder.pdf";
 
@@ -14,15 +14,7 @@ export const venueData = {
     icon: "🍺",
     blurb:
       "Cozy pub in the middle of Manchester! The Morris is your quintessential Manchester pub in the heart of the Northern Quarter. Come and grab a table or a stool at the bar to sample our locally brewed Mancunian beers.",
-    hours: [
-      "Mon: 12pm – 11.30pm",
-      "Tue: 12pm – 11.30pm",
-      "Wed: 12pm – 11.30pm",
-      "Thu: 12pm – 11.30pm",
-      "Fri: 12pm – 11.30pm",
-      "Sat: 12pm – 11.30pm",
-      "Sun: 12pm – 11.30pm",
-    ],
+    hours: "Mon–Sun: 12pm – 11.30pm", // now a string
 
     contact: {
       phone: "0161 123 4567",
@@ -40,7 +32,6 @@ export const venueData = {
     menuBackground: `${PUB_BASE}/other-assets/IMG_2839.jpg`,
     menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
     openingHoursBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
-    // contactBackgroundImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
 
     // ——— Gallery ———
     gallery: [
@@ -72,7 +63,7 @@ export const venueData = {
     icon: "🍸",
     blurb:
       "Elegant and intimate cocktail experience on the first floor. Sip on our bespoke creations made with premium spirits and fresh ingredients.",
-    hours: "Mon–Sun: 12pm – 11.30pm",
+    hours: "Mon–Sun: 12pm – 11.30pm", // string now
 
     contact: {
       phone: "0161 765 4321",
@@ -91,7 +82,6 @@ export const venueData = {
     menuBackground: `${COCKTAIL_BASE}/other-assets/emerald07.jpg`,
     menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
     openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
-    // contactBackgroundImage: `${COCKTAIL_BASE}/backgrounds/emerald07.jpg`,
 
     // ——— Gallery ———
     gallery: [
@@ -114,40 +104,30 @@ export const venueData = {
     ],
   },
 
+  /*
   "venue-hire": {
     name: "Private Hire Room",
     venueType: "private-hire",
-
-    // ——— General Info ———
     description: "Private event room on the second floor.",
     icon: "🎉",
-    blurb:
-      "Host your private parties, meetings or events in our beautifully styled hire space. Tailored packages available.",
+    blurb: "Host your private parties, meetings or events in our beautifully styled hire space. Tailored packages available.",
     hours: "Available by booking only",
     contact: {
       phone: "0161 225 6789",
       email: "events@themorris.com",
     },
-
-    // ——— Branding & Logos ———
     image: `${HIRE_BASE}/logos/venue-hire-logo.png`,
-
-    // ——— Backgrounds ———
     bgImage: `${HIRE_BASE}/backgrounds/bg.jpg`,
-    cpImage: "",
-
-    // ——— Gallery ———
     gallery: [
       `${HIRE_BASE}/gallery/hire1.jpg`,
       `${HIRE_BASE}/gallery/hire2.jpg`,
       `${HIRE_BASE}/gallery/hire3.jpg`,
     ],
-
-    // ——— Menu ———
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
     },
     menuDescription: "hire me.",
   },
+  */
 } as const;

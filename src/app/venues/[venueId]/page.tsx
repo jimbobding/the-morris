@@ -11,8 +11,7 @@ import { venueData } from "@/data/VenueData";
 
 export default function VenuePage() {
   const { venueId } = useParams();
-  const venueKey = venueId as keyof typeof venueData;
-  const venue = venueData[venueKey];
+  const venue = venueData[venueId as keyof typeof venueData];
 
   if (!venue) {
     return (
@@ -22,46 +21,26 @@ export default function VenuePage() {
     );
   }
 
-  // --- Safe images with fallbacks ---
-  const safeImage =
-    "image" in venue
-      ? venue.image
-      : "bgImage" in venue
-        ? venue.bgImage
-        : "/images/fallback.jpg";
-  const bgImage =
-    "bgImage" in venue ? venue.bgImage : "/images/fallback-bg.jpg";
-  const galleryBgImage =
-    "galleryBgImage" in venue
-      ? venue.galleryBgImage
-      : "/images/fallback-bg.jpg";
-  const menuBackground =
-    "menuBackground" in venue
-      ? venue.menuBackground
-      : "/images/fallback-bg.jpg";
+  // Safe fallbacks for images
+  const image = venue.image ?? "/images/fallback.jpg";
+  const bgImage = venue.bgImage ?? "/images/fallback-bg.jpg";
+  const galleryBgImage = venue.galleryBgImage ?? "/images/fallback-bg.jpg";
+  const menuBackground = venue.menuBackground ?? "/images/fallback.jpg";
   const menuGalleryBackground =
-    "menuGalleryBackground" in venue
-      ? venue.menuGalleryBackground
-      : "/images/fallback-bg.jpg";
-
-  // --- Mutable arrays for TS ---
-  const menuGallery: string[] =
-    "menuGallery" in venue && venue.menuGallery ? [...venue.menuGallery] : [];
-  const hoursArray: string[] = Array.isArray(venue.hours)
-    ? [...venue.hours]
-    : [venue.hours];
-
+    venue.menuGalleryBackground ?? "/images/fallback.jpg";
   const openingHoursBgImage =
-    "openingHoursBgImage" in venue
-      ? venue.openingHoursBgImage
-      : "/images/fallback-bg.jpg";
+    venue.openingHoursBgImage ?? "/images/fallback.jpg";
+
+  // Cast readonly arrays to mutable arrays where needed
+  const gallery = [...venue.gallery];
+  const menuGallery = [...venue.menuGallery];
 
   return (
     <>
       <VenueHeader
         name={venue.name}
         description={venue.description}
-        image={safeImage}
+        image={image}
         bgImage={bgImage}
         icon={venue.icon}
       />
@@ -70,24 +49,25 @@ export default function VenuePage() {
         title={`Morris: ${venue.name}`}
         blurb={venue.blurb}
         galleryBgImage={galleryBgImage}
-        images={venue.gallery ?? []}
-        hours={hoursArray.join(", ")} // or pass hoursArray if GallerySection accepts string[]
+        images={gallery}
+        hours={venue.hours} // hours are already strings
         contact={venue.contact}
       />
 
       <MenuSection
-        food={venue.menu?.food}
-        drinks={venue.menu?.drinks}
+        food={venue.menu.food}
+        drinks={venue.menu.drinks}
         backgroundImage={menuBackground}
         menuDescription={venue.menuDescription}
         menuGallery={menuGallery}
         menuGalleryBackground={menuGalleryBackground}
+        borderColor={venue.venueType === "cocktail-bar" ? "#90EE90" : "#FFFDD0"} // inline example
       />
 
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
         <OpeningHours
           venueType={venue.venueType}
-          hours={hoursArray}
+          hours={venue.hours} // string now
           openingHoursBgImage={openingHoursBgImage}
         />
       )}
