@@ -1,7 +1,6 @@
 // constants/venueStyles.ts
-import { Dancing_Script, Hanken_Grotesk } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 
-const dancing = Dancing_Script({ weight: "400", subsets: ["latin"] });
 const hanken = Hanken_Grotesk({ weight: "400", subsets: ["latin"] });
 
 export const venueStyles = {
