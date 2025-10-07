@@ -18,7 +18,10 @@ export default function ContactInfoSection({
   const { phone, email, contactBackgroundImage } = contact;
 
   return (
-    <section className="relative min-h-[60vh] px-6 py-20 flex items-center justify-center">
+    <section
+      id="contact"
+      className="relative min-h-[60vh] px-6 py-20 flex items-center justify-center"
+    >
       {contactBackgroundImage && (
         <>
           <Image

@@ -49,7 +49,7 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
     { href: "#gallery", label: "Gallery" },
     { href: "#menu", label: "Menu" },
     { href: "#contact", label: "Contact" },
-    { href: "#opening", label: "Opening Hours" },
+    { href: "#opening-hours", label: "Opening Hours" },
   ];
 
   return (
