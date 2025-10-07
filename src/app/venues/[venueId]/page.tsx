@@ -22,23 +22,39 @@ export default function VenuePage() {
     );
   }
 
-  // ✅ Type-safe safeImage
+  // --- Safe images with fallbacks ---
   const safeImage =
-    ("image" in venue ? venue.image : undefined) ??
-    ("bgImage" in venue ? venue.bgImage : undefined) ??
-    "/images/fallback.jpg";
+    "image" in venue
+      ? venue.image
+      : "bgImage" in venue
+        ? venue.bgImage
+        : "/images/fallback.jpg";
+  const bgImage =
+    "bgImage" in venue ? venue.bgImage : "/images/fallback-bg.jpg";
+  const galleryBgImage =
+    "galleryBgImage" in venue
+      ? venue.galleryBgImage
+      : "/images/fallback-bg.jpg";
+  const menuBackground =
+    "menuBackground" in venue
+      ? venue.menuBackground
+      : "/images/fallback-bg.jpg";
+  const menuGalleryBackground =
+    "menuGalleryBackground" in venue
+      ? venue.menuGalleryBackground
+      : "/images/fallback-bg.jpg";
 
-  const getVenueBorderColor = (type: string) => {
-    switch (type) {
-      case "cocktail-bar":
-        return "#90EE90"; // Light green
-      case "private-hire":
-        return "#00CED1"; // Cyan
-      case "pub":
-      default:
-        return "#FFFDD0"; // Cream
-    }
-  };
+  // --- Mutable arrays for TS ---
+  const menuGallery: string[] =
+    "menuGallery" in venue && venue.menuGallery ? [...venue.menuGallery] : [];
+  const hoursArray: string[] = Array.isArray(venue.hours)
+    ? [...venue.hours]
+    : [venue.hours];
+
+  const openingHoursBgImage =
+    "openingHoursBgImage" in venue
+      ? venue.openingHoursBgImage
+      : "/images/fallback-bg.jpg";
 
   return (
     <>
@@ -46,41 +62,33 @@ export default function VenuePage() {
         name={venue.name}
         description={venue.description}
         image={safeImage}
-        bgImage={venue.bgImage ?? "/images/fallback-bg.jpg"}
+        bgImage={bgImage}
         icon={venue.icon}
       />
 
       <GallerySection
         title={`Morris: ${venue.name}`}
         blurb={venue.blurb}
-        galleryBgImage={venue.galleryBgImage ?? "/images/fallback-bg.jpg"}
-        images={venue.gallery}
-        hours={venue.hours}
+        galleryBgImage={galleryBgImage}
+        images={venue.gallery ?? []}
+        hours={hoursArray.join(", ")} // or pass hoursArray if GallerySection accepts string[]
         contact={venue.contact}
       />
 
       <MenuSection
         food={venue.menu?.food}
         drinks={venue.menu?.drinks}
-        backgroundImage={venue.menuBackground ?? "/images/fallback-bg.jpg"}
+        backgroundImage={menuBackground}
         menuDescription={venue.menuDescription}
-        menuGallery={venue.menuGallery}
-        menuGalleryBackground={
-          venue.menuGalleryBackground ?? "/images/fallback-bg.jpg"
-        }
-        venueData={{
-          type: venue.venueType,
-          borderColor: getVenueBorderColor(venue.venueType),
-        }}
+        menuGallery={menuGallery}
+        menuGalleryBackground={menuGalleryBackground}
       />
 
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
         <OpeningHours
           venueType={venue.venueType}
-          hours={venue.hours}
-          openingHoursBgImage={
-            venue.openingHoursBgImage ?? "/images/fallback-bg.jpg"
-          }
+          hours={hoursArray}
+          openingHoursBgImage={openingHoursBgImage}
         />
       )}
 
