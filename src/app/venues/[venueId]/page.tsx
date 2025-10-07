@@ -11,7 +11,8 @@ import { venueData } from "@/data/VenueData";
 
 export default function VenuePage() {
   const { venueId } = useParams();
-  const venue = venueData[venueId as keyof typeof venueData];
+  const venueKey = venueId as keyof typeof venueData;
+  const venue = venueData[venueKey];
 
   if (!venue) {
     return (
@@ -20,6 +21,12 @@ export default function VenuePage() {
       </div>
     );
   }
+
+  // ✅ Type-safe safeImage
+  const safeImage =
+    ("image" in venue ? venue.image : undefined) ??
+    ("bgImage" in venue ? venue.bgImage : undefined) ??
+    "/images/fallback.jpg";
 
   const getVenueBorderColor = (type: string) => {
     switch (type) {
@@ -33,24 +40,20 @@ export default function VenuePage() {
     }
   };
 
-  const safeImage = venue.image ?? venue.bgImage ?? "/images/fallback.jpg";
-
-  console.log("venue contact:", venue?.contact);
-
   return (
     <>
       <VenueHeader
         name={venue.name}
         description={venue.description}
         image={safeImage}
-        bgImage={venue.bgImage}
+        bgImage={venue.bgImage ?? "/images/fallback-bg.jpg"}
         icon={venue.icon}
       />
 
       <GallerySection
         title={`Morris: ${venue.name}`}
         blurb={venue.blurb}
-        galleryBgImage={venue.galleryBgImage}
+        galleryBgImage={venue.galleryBgImage ?? "/images/fallback-bg.jpg"}
         images={venue.gallery}
         hours={venue.hours}
         contact={venue.contact}
@@ -59,10 +62,12 @@ export default function VenuePage() {
       <MenuSection
         food={venue.menu?.food}
         drinks={venue.menu?.drinks}
-        backgroundImage={venue.menuBackground}
+        backgroundImage={venue.menuBackground ?? "/images/fallback-bg.jpg"}
         menuDescription={venue.menuDescription}
         menuGallery={venue.menuGallery}
-        menuGalleryBackground={venue.menuGalleryBackground}
+        menuGalleryBackground={
+          venue.menuGalleryBackground ?? "/images/fallback-bg.jpg"
+        }
         venueData={{
           type: venue.venueType,
           borderColor: getVenueBorderColor(venue.venueType),
@@ -73,11 +78,13 @@ export default function VenuePage() {
         <OpeningHours
           venueType={venue.venueType}
           hours={venue.hours}
-          openingHoursBgImage={venue.openingHoursBgImage}
+          openingHoursBgImage={
+            venue.openingHoursBgImage ?? "/images/fallback-bg.jpg"
+          }
         />
       )}
 
-      {venue?.contact && <ContactInfoSection contact={venue.contact} />}
+      {venue.contact && <ContactInfoSection contact={venue.contact} />}
     </>
   );
 }
