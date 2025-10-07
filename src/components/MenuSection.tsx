@@ -9,7 +9,7 @@ type MenuSectionProps = {
   drinks?: string;
   backgroundImage?: string;
   menuDescription?: string;
-  menuGallery?: string[];
+  menuGallery?: readonly string[]; // ✅ changed from mutable string[]
   menuGalleryBackground?: string;
   borderColor?: string;
 };
