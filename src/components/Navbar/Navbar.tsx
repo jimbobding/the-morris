@@ -1,11 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // import here
+import { usePathname } from "next/navigation";
 import { useNavbarToggle } from "../hooks/useNavbarToggle";
 import NavLinks from "./NavLinks";
 import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
+import { venueData } from "@/data/VenueData";
+
+type VenueSlug = keyof typeof venueData; // "pub" | "cocktail-bar"
 
 export default function Navbar() {
   const { isOpen, toggle, close } = useNavbarToggle();
@@ -13,7 +16,11 @@ export default function Navbar() {
 
   // Extract venue slug from URL (e.g., /venues/pub)
   const segments = pathname.split("/");
-  const targetSlug = segments[1] === "venues" ? segments[2] : "default";
+  const rawSlug = segments[1] === "venues" ? segments[2] : "default";
+
+  // Validate & cast to VenueSlug | "default"
+  const targetSlug: VenueSlug | "default" =
+    rawSlug in venueData ? (rawSlug as VenueSlug) : "default";
 
   return (
     <nav className="bg-gray-900 text-white px-4 py-3">
