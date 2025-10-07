@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-
-import { Dancing_Script, Hanken_Grotesk } from "next/font/google";
-
-const dancing = Dancing_Script({ weight: "400", subsets: ["latin"] });
-const hanken = Hanken_Grotesk({ weight: "400", subsets: ["latin"] });
+import { venueStyles } from "@/constants/venueStyles";
 
 type MenuSectionProps = {
   food?: string;
@@ -16,12 +12,6 @@ type MenuSectionProps = {
   menuGallery?: string[];
   menuGalleryBackground?: string;
   borderColor?: string;
-};
-
-const venueBorderColors: Record<string, string> = {
-  pub: "#FFFDD0",
-  "cocktail-bar": "#980001", // <-- updated key here
-  "private-hire": "#00CED1",
 };
 
 export default function MenuSection({
@@ -35,18 +25,16 @@ export default function MenuSection({
 }: MenuSectionProps) {
   const pathname = usePathname();
 
-  // Parse the venue slug from the URL (e.g. "/venues/cocktail" → "cocktail")
+  // Extract venueSlug from the path, e.g. /venues/cocktail-bar → "cocktail-bar"
   const venueSlug = pathname?.startsWith("/venues")
     ? pathname.split("/")[2]
-    : "pub"; // default fallback if not on a venue page
+    : "default"; // fallback
 
-  const fontClass =
-    venueSlug === "cocktail-bar" ? dancing.className : hanken.className;
+  const currentStyles = venueStyles[venueSlug] || venueStyles.default;
 
-  const resolvedBorderColor =
-    borderColor || venueBorderColors[venueSlug] || "#98FF98";
+  const fontClass = currentStyles.fontClass;
+  const resolvedBorderColor = borderColor || currentStyles.borderColor;
 
-  console.log("venueSlug:", venueSlug);
   return (
     <>
       <section id="menu">

@@ -5,7 +5,8 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-import { LOGOS } from "@/constants/imagePaths"; // logo config
+import { LOGOS } from "@/constants/imagePaths";
+import { venueStyles } from "@/constants/venueStyles";
 
 // Define allowed slugs
 type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
@@ -23,6 +24,9 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
     ? (pathname.split("/")[2] as VenueSlug)
     : "default";
 
+  const currentVenueStyle = venueStyles[venueSlug] || venueStyles.default;
+  const venueNavClass = currentVenueStyle.navLinkClass;
+
   const linkBaseStyles =
     "relative inline-block px-2 py-1 transition duration-300";
 
@@ -31,15 +35,6 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
     after:w-0 after:h-[2px] after:transition-all after:duration-300 
     hover:after:w-full
   `;
-
-  const venueStyles: Record<VenueSlug, string> = {
-    pub: "after:bg-[#FFFDD0] hover:text-[#FFFDD0]",
-    "cocktail-bar": "after:bg-[#980001] hover:text-[#980001]",
-    "private-hire": "after:bg-[#00CED1] hover:text-[#00CED1]",
-    default: "after:bg-white hover:text-white",
-  };
-
-  const venueSpecificStyles = venueStyles[venueSlug] || venueStyles.default;
 
   // Safely access logo paths
   const currentLogos = LOGOS[targetSlug] || LOGOS.default;
@@ -87,7 +82,7 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
             <Link
               href={href}
               onClick={onClick}
-              className={`${linkBaseStyles} ${baseUnderlineStyles} ${venueSpecificStyles}`}
+              className={`${linkBaseStyles} ${baseUnderlineStyles} ${venueNavClass}`}
             >
               {label}
             </Link>

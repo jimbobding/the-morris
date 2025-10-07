@@ -4,7 +4,6 @@ import React from "react";
 import { useParams } from "next/navigation";
 import MenuSection from "@/components/MenuSection";
 import OpeningHours from "@/components/OpeningHours";
-
 import ContactInfoSection from "@/components/ContactInfo";
 import VenueHeader from "@/components/VenueHeader";
 import GallerySection from "@/components/GallerySection";
@@ -24,15 +23,17 @@ export default function VenuePage() {
 
   const getVenueBorderColor = (type: string) => {
     switch (type) {
-      case "cocktail":
-        return "#90EE90"; // Light green for cocktail bar
+      case "cocktail-bar":
+        return "#90EE90"; // Light green
       case "private-hire":
-        return "#00CED1";
+        return "#00CED1"; // Cyan
       case "pub":
       default:
-        return "#FFFDD0"; // Light cream for pub
+        return "#FFFDD0"; // Cream
     }
   };
+
+  const safeImage = venue.image ?? venue.bgImage ?? "/images/fallback.jpg";
 
   console.log("venue contact:", venue?.contact);
 
@@ -41,7 +42,7 @@ export default function VenuePage() {
       <VenueHeader
         name={venue.name}
         description={venue.description}
-        image={venue.image}
+        image={safeImage}
         bgImage={venue.bgImage}
         icon={venue.icon}
       />

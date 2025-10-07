@@ -88,14 +88,14 @@ export const venueData = {
     bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
     galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
     cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
-    menuBackground: `${COCKTAIL_BASE}/other-assets/IMG_2006.JPG`,
+    menuBackground: `${COCKTAIL_BASE}/other-assets/emerald07.jpg`,
     menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
     openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
     // contactBackgroundImage: `${COCKTAIL_BASE}/backgrounds/emerald07.jpg`,
 
     // ——— Gallery ———
     gallery: [
-      `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
+      `${COCKTAIL_BASE}/other-assets/IMG_2548.jpg`,
       `${COCKTAIL_BASE}/other-assets/creamsoda01.jpg`,
       `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
     ],
