@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 type GallerySectionProps = {
   title: string;
   blurb?: string;
-  bgImage?: string;
+  bgColor?: string; // NEW
+  textColor?: string; // NEW
   galleryBgImage?: string;
   images: readonly string[];
   hours?: string;
@@ -19,21 +20,24 @@ export default function GallerySection({
   title,
   blurb,
   galleryBgImage,
-
+  bgColor = "#000", // fallback black
+  textColor = "#fff", // fallback white
   images,
 }: GallerySectionProps) {
   return (
     <section id="gallery">
       <div
-        className="py-16 px-8 text-white"
+        className="py-16 px-8"
         style={
           galleryBgImage
             ? {
-                backgroundImage: `url("${galleryBgImage}")`,
+                backgroundImage: `url("${galleryBgImage}")`, // commented out for now
+                backgroundColor: bgColor,
+                color: textColor,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }
-            : undefined
+            : { backgroundColor: bgColor, color: textColor }
         }
       >
         <h2 className="text-3xl font-bold mb-10 text-center">{title}</h2>

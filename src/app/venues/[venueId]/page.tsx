@@ -4,7 +4,6 @@ import React from "react";
 import { useParams } from "next/navigation";
 import MenuSection from "@/components/MenuSection";
 import OpeningHours from "@/components/OpeningHours";
-
 import ContactInfoSection from "@/components/ContactInfo";
 import VenueHeader from "@/components/VenueHeader";
 import GallerySection from "@/components/GallerySection";
@@ -22,61 +21,101 @@ export default function VenuePage() {
     );
   }
 
-  const getVenueBorderColor = (type: string) => {
+  // Dynamic colors by venue type
+  const getVenueColors = (type: string) => {
     switch (type) {
-      case "cocktail":
-        return "#90EE90"; // Light green for cocktail bar
-      case "private-hire":
-        return "#00CED1";
+      case "cocktail-bar":
+        return {
+          background: "linear-gradient(135deg, #72233f 0%, #ff9b7a 100%)",
+          text: "#ffffff",
+          border: "#ff9b7a",
+        };
       case "pub":
+        return {
+          background: "#000000",
+          text: "#ffffff",
+          border: "#ffffff",
+        };
+      case "private-hire":
+        return {
+          background: "#f0f0f0",
+          text: "#000000",
+          border: "#000000",
+        };
       default:
-        return "#FFFDD0"; // Light cream for pub
+        return {
+          background: "#ffffff",
+          text: "#000000",
+          border: "#000000",
+        };
     }
   };
 
-  console.log("venue contact:", venue?.contact);
+  const colors = getVenueColors(venue.venueType);
 
   return (
     <>
+      {/* Header */}
       <VenueHeader
         name={venue.name}
         description={venue.description}
         image={venue.image}
-        bgImage={venue.bgImage}
+        bgImage={venue.bgImage} // comment out if not needed
         icon={venue.icon}
+        bgColor={colors.background}
+        textColor={colors.text}
       />
 
+      {/* Gallery Section */}
       <GallerySection
-        title={`Morris: ${venue.name}`}
+        title={venue.name}
         blurb={venue.blurb}
-        galleryBgImage={venue.galleryBgImage}
         images={venue.gallery}
-        hours={venue.hours}
-        contact={venue.contact}
+        bgColor={venue.venueType === "cocktail-bar" ? "#72233f" : "#000"}
+        textColor={venue.venueType === "cocktail-bar" ? "#ff9b7a" : "#fff"}
       />
 
-      <MenuSection
-        food={venue.menu?.food}
-        drinks={venue.menu?.drinks}
-        backgroundImage={venue.menuBackground}
-        menuDescription={venue.menuDescription}
-        menuGallery={venue.menuGallery}
-        menuGalleryBackground={venue.menuGalleryBackground}
-        venueData={{
-          type: venue.venueType,
-          borderColor: getVenueBorderColor(venue.venueType),
-        }}
-      />
-
-      {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
-        <OpeningHours
-          venueType={venue.venueType}
-          hours={venue.hours}
-          openingHoursBgImage={venue.openingHoursBgImage}
+      {/* Menu Section */}
+      {venue.menu && (
+        <MenuSection
+          food={venue.menu?.food}
+          drinks={venue.menu?.drinks}
+          menuBackground={venue.menuBackground} // ✅ correct key
+          menuDescription={venue.menuDescription}
+          menuGallery={venue.menuGallery}
+          menuGalleryBackground={venue.menuGalleryBackground}
+          venueData={{
+            venueType: venue.venueType,
+            backgroundColor: colors.background,
+            textColor: colors.text,
+            borderColor: colors.border,
+          }}
         />
       )}
 
-      {venue?.contact && <ContactInfoSection contact={venue.contact} />}
+      {/* Opening Hours */}
+      {/* {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
+        <OpeningHours
+          venueType={venue.venueType}
+          hours={venue.hours}
+          // openingHoursBgImage={venue.openingHoursBgImage} // comment out if not needed
+          bgColor={colors.background}
+          textColor={colors.text}
+        />
+      )} */}
+
+      {/* Contact Info */}
+      {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") &&
+        venue.contact && (
+          <ContactInfoSection
+            contact={venue.contact}
+            borderColor={colors.border}
+            bgColor={colors.background}
+            textColor={colors.text}
+            venueType={venue.venueType}
+            hours={venue.hours}
+          />
+        )}
     </>
   );
 }

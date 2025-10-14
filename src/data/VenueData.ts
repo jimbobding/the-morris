@@ -27,7 +27,7 @@ export const venueData = {
     contact: {
       phone: "0161 123 4567",
       email: "pub@themorris.com",
-      contactBackgroundImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
+      // contactBackgroundImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
     },
 
     // ——— Branding & Logos ———
@@ -35,12 +35,14 @@ export const venueData = {
     hoverLogo: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png`,
 
     // ——— Backgrounds ———
-    bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
-    galleryBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
+    // bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
+    // galleryBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
     menuBackground: `${PUB_BASE}/other-assets/IMG_2839.jpg`,
-    menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
-    openingHoursBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
-    // contactBackgroundImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
+    // menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
+    // openingHoursBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
+
+    backgroundColor: "#000000",
+    textColor: "#ffffff",
 
     // ——— Gallery ———
     gallery: [
@@ -53,6 +55,8 @@ export const venueData = {
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
+      // food: `${PUB_BASE}/menus/pub-food.pdf`,
+      // drinks: `${PUB_BASE}/menus/pub-drinks.pdf`,
     },
     menuDescription:
       "A proper pub menu with traditional snacks and locally brewed ales.",
@@ -67,7 +71,6 @@ export const venueData = {
     name: "Cocktail Bar",
     venueType: "cocktail-bar",
 
-    // ——— General Info ———
     description: "Bespoke cocktails on the first floor.",
     icon: "🍸",
     blurb:
@@ -77,30 +80,28 @@ export const venueData = {
     contact: {
       phone: "0161 765 4321",
       email: "cocktails@themorris.com",
-      contactBackgroundImage: `${COCKTAIL_BASE}/other-assets/IMG_2264 (1).jpg`,
+      // contactBackgroundImage: `${COCKTAIL_BASE}/other-assets/IMG_2264 (1).jpg`,
     },
 
-    // ——— Branding & Logos ———
     image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png`,
     hoverLogo: `${COCKTAIL_BASE}/logos/THE%20MORRIS_COCKTAIL%20BAR%20LOGO_LIGHT%20YELLOW.png`,
 
-    // ——— Backgrounds ———
-    bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
-    galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
-    cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
+    // bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
+    // galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
+    // cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
     menuBackground: `${COCKTAIL_BASE}/other-assets/IMG_2006.JPG`,
-    menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
-    openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
-    // contactBackgroundImage: `${COCKTAIL_BASE}/backgrounds/emerald07.jpg`,
+    // menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
+    // openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
 
-    // ——— Gallery ———
+    backgroundColor: "#72233f",
+    textColor: "#ff9b7a",
+
     gallery: [
       `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
       `${COCKTAIL_BASE}/other-assets/creamsoda01.jpg`,
       `${COCKTAIL_BASE}/other-assets/IMG_2205.jpeg`,
     ],
 
-    // ——— Menu ———
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
@@ -118,36 +119,35 @@ export const venueData = {
     name: "Private Hire Room",
     venueType: "private-hire",
 
-    // ——— General Info ———
     description: "Private event room on the second floor.",
     icon: "🎉",
     blurb:
       "Host your private parties, meetings or events in our beautifully styled hire space. Tailored packages available.",
     hours: "Available by booking only",
+
     contact: {
       phone: "0161 225 6789",
       email: "events@themorris.com",
     },
 
-    // ——— Branding & Logos ———
     image: `${HIRE_BASE}/logos/venue-hire-logo.png`,
 
-    // ——— Backgrounds ———
-    bgImage: `${HIRE_BASE}/backgrounds/bg.jpg`,
-    cpImage: "",
+    // bgImage: `${HIRE_BASE}/backgrounds/bg.jpg`,
+    // cpImage: "",
 
-    // ——— Gallery ———
+    backgroundColor: "#2a2a2a",
+    textColor: "#ff80ab",
+
     gallery: [
-      `${HIRE_BASE}/gallery/hire1.jpg`,
-      `${HIRE_BASE}/gallery/hire2.jpg`,
-      `${HIRE_BASE}/gallery/hire3.jpg`,
+      // `${HIRE_BASE}/gallery/hire1.jpg`,
+      // `${HIRE_BASE}/gallery/hire2.jpg`,
+      // `${HIRE_BASE}/gallery/hire3.jpg`,
     ],
 
-    // ——— Menu ———
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
     },
-    menuDescription: "hire me.",
+    menuDescription: "Hire space info.",
   },
 } as const;
