@@ -55,14 +55,13 @@ export default function GallerySection({
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true, amount: 0.2 }}
-              className="rounded-2xl overflow-hidden shadow-lg transition-transform"
+              className="overflow-hidden rounded-2xl shadow-xl border-4 aspect-[3/3] relative"
             >
               <Image
                 src={src}
                 alt={`Gallery image ${idx + 1}`}
-                width={400}
-                height={300}
-                className="object-cover w-full h-full"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-500"
               />
             </motion.div>
           ))}

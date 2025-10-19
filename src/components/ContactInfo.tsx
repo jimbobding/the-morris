@@ -1,52 +1,36 @@
 "use client";
 
-import Image from "next/image";
 import clsx from "clsx";
 
-type VenueInfoSectionProps = {
-  hours: string[] | string;
-  venueType: "pub" | "cocktail-bar";
-  address: string;
-  phone: string;
-  email: string;
-  backgroundImage?: string;
+type ContactInfoProps = {
+  venueType: "pub" | "cocktail-bar" | "private-hire";
+  contact: { phone: string; email: string; address: string };
+  bgColor: string; // Primary background color
+  textColor: string; // Primary text color
+  cardColor: string; // Card background color
+  borderColor: string;
+  hours?: string[] | string;
 };
 
-export default function VenueInfoSection({
-  hours,
+export default function ContactInfoSection({
   venueType,
-  address,
-  phone,
-  email,
-  backgroundImage,
-}: VenueInfoSectionProps) {
-  const isPub = venueType === "pub";
-  const isCocktailBar = venueType === "cocktail-bar";
-
+  contact,
+  bgColor,
+  textColor,
+  cardColor,
+  borderColor,
+  hours,
+}: ContactInfoProps) {
   return (
-    <section className="relative w-full py-20 px-6 text-white">
-      {/* Background image */}
-      {backgroundImage && (
-        <>
-          <Image
-            src={backgroundImage}
-            alt="Venue background"
-            fill
-            className="object-cover object-center -z-10"
-            quality={85}
-          />
-          <div className="absolute inset-0 bg-black/60 -z-10" />
-        </>
-      )}
-
-      {/* 2 Column Layout */}
+    <section
+      className="relative w-full py-20 px-6"
+      style={{ backgroundColor: bgColor, color: textColor }}
+    >
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-start">
-        {/* === Opening Hours === */}
+        {/* Opening Hours Card */}
         <div
-          className={clsx(
-            "p-8 rounded-2xl bg-black/60 border border-white/20 shadow-lg backdrop-blur-md",
-            isCocktailBar && "text-yellow-300"
-          )}
+          className="p-8 rounded-2xl border shadow-lg backdrop-blur-md"
+          style={{ backgroundColor: cardColor, color: textColor, borderColor }}
         >
           <h2 className="text-3xl font-bold mb-6 uppercase tracking-widest">
             Opening Hours
@@ -64,9 +48,7 @@ export default function VenueInfoSection({
                     <span className="font-medium uppercase tracking-wide">
                       {day.trim()}
                     </span>
-                    <span className="text-white/90 font-semibold">
-                      {time.trim()}
-                    </span>
+                    <span className="font-semibold">{time.trim()}</span>
                   </li>
                 );
               })}
@@ -76,36 +58,22 @@ export default function VenueInfoSection({
           )}
         </div>
 
-        {/* === Contact & Address === */}
-        <div className="p-8 rounded-2xl bg-black/60 border border-white/20 shadow-lg backdrop-blur-md">
+        {/* Contact Info Card */}
+        <div
+          className="p-8 rounded-2xl border shadow-lg backdrop-blur-md"
+          style={{ backgroundColor: cardColor, color: textColor, borderColor }}
+        >
           <h2 className="text-3xl font-bold mb-6 uppercase tracking-widest">
             Visit Us
           </h2>
 
-          <p className="text-lg mb-6 text-white/90 whitespace-pre-line">
-            📍 {address}
+          <p className="text-lg mb-6 whitespace-pre-line">{contact.address}</p>
+          <p className="mb-2">
+            📞 <a href={`tel:${contact.phone}`}>{contact.phone}</a>
           </p>
-
-          <div className="space-y-4 text-lg">
-            <p>
-              📞{" "}
-              <a
-                href={`tel:${phone}`}
-                className="underline hover:text-yellow-300 transition-colors"
-              >
-                {phone}
-              </a>
-            </p>
-            <p>
-              📧{" "}
-              <a
-                href={`mailto:${email}`}
-                className="underline hover:text-yellow-300 transition-colors"
-              >
-                {email}
-              </a>
-            </p>
-          </div>
+          <p>
+            📧 <a href={`mailto:${contact.email}`}>{contact.email}</a>
+          </p>
         </div>
       </div>
     </section>

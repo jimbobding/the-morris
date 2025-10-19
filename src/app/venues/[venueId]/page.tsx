@@ -21,37 +21,12 @@ export default function VenuePage() {
     );
   }
 
-  // Dynamic colors by venue type
-  const getVenueColors = (type: string) => {
-    switch (type) {
-      case "cocktail-bar":
-        return {
-          background: "linear-gradient(135deg, #72233f 0%, #ff9b7a 100%)",
-          text: "#ffffff",
-          border: "#ff9b7a",
-        };
-      case "pub":
-        return {
-          background: "#000000",
-          text: "#ffffff",
-          border: "#ffffff",
-        };
-      case "private-hire":
-        return {
-          background: "#f0f0f0",
-          text: "#000000",
-          border: "#000000",
-        };
-      default:
-        return {
-          background: "#ffffff",
-          text: "#000000",
-          border: "#000000",
-        };
-    }
+  // Pull colors directly from venueData
+  const colors = {
+    background: venue.backgroundColor,
+    text: venue.textColor,
+    border: venue.borderColor || "#fff",
   };
-
-  const colors = getVenueColors(venue.venueType);
 
   return (
     <>
@@ -60,7 +35,7 @@ export default function VenuePage() {
         name={venue.name}
         description={venue.description}
         image={venue.image}
-        bgImage={venue.bgImage} // comment out if not needed
+        bgImage={venue.bgImage}
         icon={venue.icon}
         bgColor={colors.background}
         textColor={colors.text}
@@ -71,8 +46,8 @@ export default function VenuePage() {
         title={venue.name}
         blurb={venue.blurb}
         images={venue.gallery}
-        bgColor={venue.venueType === "cocktail-bar" ? "#72233f" : "#000"}
-        textColor={venue.venueType === "cocktail-bar" ? "#ff9b7a" : "#fff"}
+        bgColor={colors.background}
+        textColor={colors.text}
       />
 
       {/* Menu Section */}
@@ -80,10 +55,9 @@ export default function VenuePage() {
         <MenuSection
           food={venue.menu?.food}
           drinks={venue.menu?.drinks}
-          menuBackground={venue.menuBackground} // ✅ correct key
+          menuBackground={venue.menuBackground}
           menuDescription={venue.menuDescription}
           menuGallery={venue.menuGallery}
-          menuGalleryBackground={venue.menuGalleryBackground}
           venueData={{
             venueType: venue.venueType,
             backgroundColor: colors.background,
@@ -98,9 +72,9 @@ export default function VenuePage() {
         <OpeningHours
           venueType={venue.venueType}
           hours={venue.hours}
-          // openingHoursBgImage={venue.openingHoursBgImage} // comment out if not needed
-          bgColor={colors.background}
-          textColor={colors.text}
+          openingHoursBgImage={venue.openingHoursBgImage}
+          textColor={colors.text} // primary
+          outlineColor="#72233F" // secondary
         />
       )} */}
 
@@ -108,12 +82,13 @@ export default function VenuePage() {
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") &&
         venue.contact && (
           <ContactInfoSection
-            contact={venue.contact}
-            borderColor={colors.border}
-            bgColor={colors.background}
-            textColor={colors.text}
             venueType={venue.venueType}
+            contact={venue.contact}
             hours={venue.hours}
+            bgColor={venue.backgroundColor} // comes from venueData
+            textColor={venue.textColor} // comes from venueData
+            cardColor={venue.secondaryColor} // comes from venueData
+            borderColor={venue.borderColor} // comes from venueData
           />
         )}
     </>

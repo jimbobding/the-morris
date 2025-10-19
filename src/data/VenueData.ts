@@ -8,12 +8,10 @@ export const venueData = {
   pub: {
     name: "The Pub",
     venueType: "pub",
-
-    // ——— General Info ———
     description: "Cozy neighborhood pub on the ground floor.",
-    icon: "🍺",
     blurb:
-      "Cozy pub in the middle of Manchester! The Morris is your quintessential Manchester pub in the heart of the Northern Quarter. Come and grab a table or a stool at the bar to sample our locally brewed Mancunian beers.",
+      "Our ground floor is everything a pub should be — familiar, welcoming and full of character. We pour the best of Manchester’s brewing scene alongside a great pint of Guinness and a carbonated spritz on tap, all set to an easy-going soundtrack that keeps the conversation flowing. Whether it’s a quiet midweek pint or a busy Saturday catch-up, Downstairs is where The Morris comes alive.",
+
     hours: [
       "Mon: 12pm – 11.30pm",
       "Tue: 12pm – 11.30pm",
@@ -27,36 +25,26 @@ export const venueData = {
     contact: {
       phone: "0161 123 4567",
       email: "pub@themorris.com",
-      // contactBackgroundImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
+      address: "123 Morris St, Manchester, M1 2AB",
     },
 
-    // ——— Branding & Logos ———
     image: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png`,
     hoverLogo: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png`,
-
-    // ——— Backgrounds ———
-    // bgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
-    // galleryBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_CHARCOAL.jpg`,
     menuBackground: `${PUB_BASE}/other-assets/IMG_2839.jpg`,
-    // menuGalleryBackground: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_TEAL.jpg`,
-    // openingHoursBgImage: `${PUB_BASE}/backgrounds/SOLO DIAMOND BACKGROUND PATTERN_LINEN.jpg`,
 
     backgroundColor: "#000000",
-    textColor: "#ffffff",
+    textColor: "#FFFFFF",
+    borderColor: "#ffe680",
 
-    // ——— Gallery ———
     gallery: [
       `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
       `${PUB_BASE}/other-assets/IMG_2282.JPG`,
       `${PUB_BASE}/other-assets/IMG_2031.jpeg`,
     ],
 
-    // ——— Menu ———
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
-      // food: `${PUB_BASE}/menus/pub-food.pdf`,
-      // drinks: `${PUB_BASE}/menus/pub-drinks.pdf`,
     },
     menuDescription:
       "A proper pub menu with traditional snacks and locally brewed ales.",
@@ -70,31 +58,25 @@ export const venueData = {
   "cocktail-bar": {
     name: "Cocktail Bar",
     venueType: "cocktail-bar",
-
     description: "Bespoke cocktails on the first floor.",
-    icon: "🍸",
     blurb:
       "Elegant and intimate cocktail experience on the first floor. Sip on our bespoke creations made with premium spirits and fresh ingredients.",
+
     hours: "Mon–Sun: 12pm – 11.30pm",
 
     contact: {
-      phone: "0161 765 4321",
-      email: "cocktails@themorris.com",
-      // contactBackgroundImage: `${COCKTAIL_BASE}/other-assets/IMG_2264 (1).jpg`,
+      phone: "0161 393 2283",
+      email: "pub@themorris.com",
+      address: "57 Thomas St, Manchester M4 1NA",
     },
 
-    image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_RED.png`,
+    image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT YELLOW.png`,
     hoverLogo: `${COCKTAIL_BASE}/logos/THE%20MORRIS_COCKTAIL%20BAR%20LOGO_LIGHT%20YELLOW.png`,
-
-    // bgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
-    // galleryBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED%20DIAMOND%20BACKGROUND%20PATTERN_RED.jpg`,
-    // cpImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_DARK GREEN.jpg`,
     menuBackground: `${COCKTAIL_BASE}/other-assets/IMG_2006.JPG`,
-    // menuGalleryBackground: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND PATTERN_DARK YELLOW.jpg`,
-    // openingHoursBgImage: `${COCKTAIL_BASE}/backgrounds/ELONGATED DIAMOND BACKGROUND PATTERN_LIGHT GREEN.jpg`,
 
-    backgroundColor: "#72233f",
-    textColor: "#ff9b7a",
+    backgroundColor: "#72233F",
+    textColor: "#FF9B7A",
+    borderColor: "#FF9B7A",
 
     gallery: [
       `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
@@ -108,46 +90,42 @@ export const venueData = {
     },
     menuDescription:
       "Sip on handcrafted cocktails with seasonal flavors and retro flair.",
-    menuGallery: [
-      `${COCKTAIL_BASE}/other-assets/IMG_3452.png`,
-      `${COCKTAIL_BASE}/other-assets/IMG_2311.jpg`,
-      `${COCKTAIL_BASE}/other-assets/fruitsalad04.jpg`,
-    ],
+    menuGallery: [],
   },
 
   "venue-hire": {
     name: "Private Hire Room",
     venueType: "private-hire",
-
     description: "Private event room on the second floor.",
-    icon: "🎉",
     blurb:
       "Host your private parties, meetings or events in our beautifully styled hire space. Tailored packages available.",
+
     hours: "Available by booking only",
 
     contact: {
       phone: "0161 225 6789",
       email: "events@themorris.com",
+      address: "57 Thomas St, Manchester M4 1NA",
     },
 
     image: `${HIRE_BASE}/logos/venue-hire-logo.png`,
 
-    // bgImage: `${HIRE_BASE}/backgrounds/bg.jpg`,
-    // cpImage: "",
+    backgroundColor: "#BDBDB2",
+    textColor: "#D5654D",
+    borderColor: "#D5654D",
 
-    backgroundColor: "#2a2a2a",
-    textColor: "#ff80ab",
-
-    gallery: [
-      // `${HIRE_BASE}/gallery/hire1.jpg`,
-      // `${HIRE_BASE}/gallery/hire2.jpg`,
-      // `${HIRE_BASE}/gallery/hire3.jpg`,
-    ],
+    gallery: [],
 
     menu: {
       food: PLACEHOLDER,
       drinks: PLACEHOLDER,
     },
     menuDescription: "Hire space info.",
+  },
+
+  landing: {
+    name: "Landing Page",
+    backgroundColor: "#2B3036",
+    textColor: "#F1E8E0",
   },
 } as const;

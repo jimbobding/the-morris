@@ -1,18 +1,21 @@
-import Image from "next/image";
-import { Hanken_Grotesk, Dancing_Script } from "next/font/google";
+"use client";
 
-const dancing = Dancing_Script({ weight: "400", subsets: ["latin"] });
+import Image from "next/image";
+import { Hanken_Grotesk } from "next/font/google";
+
 const hanken = Hanken_Grotesk({ weight: "400", subsets: ["latin"] });
 
 type VenueData = {
   venueType: "pub" | "cocktail-bar" | "private-hire";
   borderColor?: string;
+  backgroundColor?: string;
+  textColor?: string;
 };
 
 type MenuSectionProps = {
   food?: string;
   drinks?: string;
-  menuBackground?: string; // main menu background image
+  menuBackground?: string;
   venueData?: VenueData;
   menuDescription?: string;
   menuGallery?: string[];
@@ -26,22 +29,23 @@ export default function MenuSection({
   menuDescription,
   menuGallery,
 }: MenuSectionProps) {
-  const venueType = venueData?.venueType ?? "pub";
-  const fontClass =
-    venueType === "cocktail-bar" ? dancing.className : hanken.className;
-
   const borderColor = venueData?.borderColor || "#ffe680";
+  const bgColor = venueData?.backgroundColor || "#72233F";
+  const textColor = venueData?.textColor || "#fff";
 
   return (
-    <section id="menu" className="relative">
-      {/* ===== Menu Section with Background Image ===== */}
-      <section className="relative w-full h-screen flex items-center justify-center text-center">
-        {/* Border Wrapper */}
+    <section
+      id="menu"
+      className="relative w-full py-16 px-6"
+      style={{ backgroundColor: bgColor }}
+    >
+      <div className="relative w-full flex items-center justify-center text-center">
+        {/* Border wrapper */}
         <div
-          className="relative w-full h-full max-w-6xl rounded-3xl border-[12px] overflow-hidden mt-12"
+          className="relative w-full max-w-6xl rounded-3xl border-[12px] overflow-hidden mt-12"
           style={{ borderColor }}
         >
-          {/* Background Image fills the wrapper */}
+          {/* Image inside border */}
           {menuBackground && (
             <Image
               src={menuBackground}
@@ -54,9 +58,10 @@ export default function MenuSection({
           )}
 
           {/* Menu content */}
-          <div className="relative w-full h-full px-12 py-16 flex flex-col items-center justify-center space-y-6 z-10">
+          <div className="relative w-full px-12 py-16 flex flex-col items-center justify-center space-y-6 z-10">
             <h2
-              className={`text-6xl md:text-7xl tracking-wide drop-shadow-lg text-white ${fontClass}`}
+              className={`text-6xl md:text-7xl drop-shadow-lg ${hanken.className}`}
+              style={{ color: textColor }}
             >
               Our Menu
             </h2>
@@ -66,7 +71,8 @@ export default function MenuSection({
                 href={food}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-2 hover:text-white transition text-white block pt-4 pb-4"
+                className="underline decoration-2 transition block pt-4 pb-4"
+                style={{ color: textColor }}
               >
                 <h3 className="text-2xl font-bold uppercase tracking-wider mb-2">
                   Bar Snacks
@@ -79,7 +85,8 @@ export default function MenuSection({
                 href={drinks}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-2 hover:text-white transition text-white block pt-4 pb-4"
+                className="underline decoration-2 transition block pt-4 pb-4"
+                style={{ color: textColor }}
               >
                 <h3 className="text-2xl font-bold uppercase tracking-wider mb-2">
                   Drinks
@@ -88,14 +95,17 @@ export default function MenuSection({
             )}
           </div>
         </div>
-      </section>
+      </div>
 
-      {/* ===== Menu Gallery Section (optional) ===== */}
+      {/* Menu Gallery */}
       {menuGallery && menuGallery.length > 0 && (
         <section className="relative py-16 px-6 text-center">
           <div className="relative w-full max-w-7xl mx-auto space-y-12">
             {menuDescription && (
-              <div className="max-w-3xl mx-auto mb-12 text-lg leading-relaxed text-gray-800">
+              <div
+                className="max-w-3xl mx-auto mb-12 text-lg leading-relaxed"
+                style={{ color: textColor }}
+              >
                 <p>{menuDescription}</p>
               </div>
             )}
@@ -105,13 +115,14 @@ export default function MenuSection({
                 <div
                   key={index}
                   className="overflow-hidden rounded-2xl shadow-xl border-4 aspect-[3/3] relative"
+                  style={{ borderColor }}
                 >
-                  {/* <Image
+                  <Image
                     src={src}
                     alt={`Gallery image ${index + 1}`}
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-500"
-                  /> */}
+                  />
                 </div>
               ))}
             </div>

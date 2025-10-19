@@ -6,26 +6,13 @@ import { PUB_BASE, COCKTAIL_BASE } from "@/constants/imagePaths";
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
-      {/* Split Background */}
-      <div className="absolute inset-0 z-0 grid grid-cols-2">
-        <div
-          className="bg-cover bg-center h-full w-full"
-          style={{
-            backgroundImage: `url(${PUB_BASE}/backgrounds/SOLO%20DIAMOND%20BACKGROUND%20PATTERN_TEAL.jpg)`,
-          }}
-        />
-        <div
-          className="bg-cover bg-center h-full w-full"
-          style={{
-            backgroundImage: `url(${PUB_BASE}/backgrounds/SOLO%20DIAMOND%20BACKGROUND%20PATTERN_TEAL.jpg)`,
-          }}
-        />
-      </div>
-
-      {/* Dark overlay */}
-      <div className="absolute inset-0 z-10 bg-black/60" />
-
+    <div
+      className="relative min-h-screen w-full overflow-hidden"
+      style={{
+        backgroundColor: "#2B3036", // charcoal background
+        color: "#F1E8E0", // linen text
+      }}
+    >
       {/* Foreground Content */}
       <div className="relative z-20 flex flex-col justify-center items-center px-4 sm:px-6 py-16 sm:py-24">
         {/* Hero Logo (static + hover swap) */}
@@ -47,15 +34,18 @@ const Home = () => {
         </div>
 
         {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-white text-center mb-4">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4">
           Welcome to The Morris
         </h1>
 
         {/* Paragraph */}
-        <p className="text-white text-center max-w-2xl mb-12 text-base sm:text-lg px-4">
-          A historic building reimagined — home to a beautifully curated
-          cocktail bar and a welcoming pub, all under one roof. Explore our
-          unique venues and discover where your next great evening begins.
+        <p className="text-center max-w-2xl mb-12 text-base sm:text-lg px-4">
+          Three floors of good taste. Downstairs we celebrate the comfort of a
+          proper pub — local pints, easy conversation and timeless atmosphere.
+          Upstairs we shake retro-spirited cocktails in a room full of
+          character, music and charm. High above, The Loft transforms for the
+          occasion — a versatile events space built for brands, parties and
+          everything in between.
         </p>
 
         {/* Venue Cards */}
@@ -64,9 +54,12 @@ const Home = () => {
             <Link
               key={id}
               href={`/venues/${id}`}
-              className="group relative bg-black rounded-2xl overflow-hidden shadow-md transition-all duration-500 hover:scale-105"
+              className="group relative rounded-2xl overflow-hidden shadow-md transition-all duration-500 hover:scale-105"
+              style={{
+                backgroundColor: "#000000", // black card background
+              }}
             >
-              <div className="relative h-56 flex items-center justify-center group-hover:bg-white transition-colors duration-300 ease-in-out p-6">
+              <div className="relative h-56 flex items-center justify-center transition-colors duration-300 ease-in-out p-6">
                 {/* Normal logo */}
                 <Image
                   src={logo}
