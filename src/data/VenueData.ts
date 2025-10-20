@@ -1,3 +1,5 @@
+"use client";
+
 const PUB_BASE = "/images/venue-images/pub";
 const COCKTAIL_BASE = "/images/venue-images/cocktail-bar";
 const HIRE_BASE = "/images/venue-images/venue-hire";
@@ -26,6 +28,7 @@ export const venueData = {
       phone: "0161 123 4567",
       email: "pub@themorris.com",
       address: "123 Morris St, Manchester, M1 2AB",
+      instagram: "@themorrispub",
     },
 
     image: `${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_LINEN.png`,
@@ -34,7 +37,7 @@ export const venueData = {
 
     backgroundColor: "#000000",
     textColor: "#FFFFFF",
-    borderColor: "#ffe680",
+    borderColor: "#FFFFFF",
 
     gallery: [
       `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
@@ -60,7 +63,7 @@ export const venueData = {
     venueType: "cocktail-bar",
     description: "Bespoke cocktails on the first floor.",
     blurb:
-      "Elegant and intimate cocktail experience on the first floor. Sip on our bespoke creations made with premium spirits and fresh ingredients.",
+      "A cocktail bar with a retro spirit and modern edge. Inspired by the creative energy of the Northern Quarter over the years, Upstairs is where nostalgia meets craft. Expect refined classics, playful signatures and an atmosphere that blends low-lit comfort with a touch of glamour. Every detail — from the glassware to the playlist — is designed for good taste and good times.",
 
     hours: "Mon–Sun: 12pm – 11.30pm",
 
@@ -68,6 +71,7 @@ export const venueData = {
       phone: "0161 393 2283",
       email: "pub@themorris.com",
       address: "57 Thomas St, Manchester M4 1NA",
+      instagram: "@themorrispub",
     },
 
     image: `${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT YELLOW.png`,
@@ -106,6 +110,7 @@ export const venueData = {
       phone: "0161 225 6789",
       email: "events@themorris.com",
       address: "57 Thomas St, Manchester M4 1NA",
+      instagram: "@themorrispub",
     },
 
     image: `${HIRE_BASE}/logos/venue-hire-logo.png`,

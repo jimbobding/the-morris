@@ -4,48 +4,32 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { LOGOS } from "@/constants/imagePaths";
 
-import { LOGOS } from "@/constants/imagePaths"; // logo config
-
-// Define allowed slugs
 type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 
 type Props = {
-  onClick?: () => void;
   targetSlug: VenueSlug;
+  textColor: string;
+  onClick?: () => void;
 };
 
-export default function NavLinks({ onClick, targetSlug }: Props) {
+export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
 
-  const venueSlug: VenueSlug = pathname.startsWith("/venues")
-    ? (pathname.split("/")[2] as VenueSlug)
-    : "default";
-
-  const linkBaseStyles =
-    "relative inline-block px-2 py-1 transition duration-300";
-
-  const baseUnderlineStyles = `
-    after:content-[''] after:absolute after:left-0 after:-bottom-0.5 
-    after:w-0 after:h-[2px] after:transition-all after:duration-300 
-    hover:after:w-full
-  `;
-
-  const venueStyles: Record<VenueSlug, string> = {
-    pub: "after:bg-[#FFFDD0] hover:text-[#FFFDD0]",
-    "cocktail-bar": "after:bg-[#980001] hover:text-[#980001]",
-    "private-hire": "after:bg-[#00CED1] hover:text-[#00CED1]",
-    default: "after:bg-white hover:text-white",
+  const hoverColors: Record<VenueSlug, string> = {
+    pub: "#B8860B", // golden amber
+    "cocktail-bar": "#FF5E5E", // neon red
+    "private-hire": "#FFD700", // gold
+    default: "#FFB6C1", // pink accent
   };
 
-  const venueSpecificStyles = venueStyles[venueSlug] || venueStyles.default;
+  const hoverColor = hoverColors[targetSlug] || hoverColors.default;
 
-  // Safely access logo paths
   const currentLogos = LOGOS[targetSlug] || LOGOS.default;
   const logoSrc = isHovered ? currentLogos.hover : currentLogos.default;
 
-  // Alternate venue logo switching logic
   const venueOrder: VenueSlug[] = ["pub", "cocktail-bar"];
   const currentIndex = venueOrder.indexOf(targetSlug);
   const nextSlug = venueOrder[(currentIndex + 1) % venueOrder.length];
@@ -59,6 +43,38 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
 
   return (
     <ul className="flex items-center space-x-6">
+      {/* Nav links */}
+      {navLinks.map(({ href, label }) => {
+        if (href.startsWith("#") && !pathname.startsWith("/venues"))
+          return null;
+
+        return (
+          <li key={label}>
+            <Link
+              href={href}
+              onClick={onClick}
+              className="relative inline-block px-2 py-1 transition-all duration-300"
+              style={{
+                color: textColor,
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = hoverColor;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = textColor;
+              }}
+            >
+              {label}
+              <span
+                className="absolute left-0 -bottom-0.5 h-[2px] transition-all duration-300 w-0 group-hover:w-full"
+                style={{ backgroundColor: hoverColor }}
+              ></span>
+            </Link>
+          </li>
+        );
+      })}
+
+      {/* Venue swap logo */}
       {pathname.startsWith("/venues") && (
         <li>
           <Link
@@ -77,23 +93,6 @@ export default function NavLinks({ onClick, targetSlug }: Props) {
           </Link>
         </li>
       )}
-
-      {navLinks.map(({ href, label }) => {
-        if (href.startsWith("#") && !pathname.startsWith("/venues"))
-          return null;
-
-        return (
-          <li key={label}>
-            <Link
-              href={href}
-              onClick={onClick}
-              className={`${linkBaseStyles} ${baseUnderlineStyles} ${venueSpecificStyles}`}
-            >
-              {label}
-            </Link>
-          </li>
-        );
-      })}
     </ul>
   );
 }

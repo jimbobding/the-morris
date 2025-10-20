@@ -16,7 +16,7 @@ const Home = () => {
       {/* Foreground Content */}
       <div className="relative z-20 flex flex-col justify-center items-center px-4 sm:px-6 py-16 sm:py-24">
         {/* Hero Logo (static + hover swap) */}
-        <div className="group relative mb-12 w-full max-w-[600px]">
+        <div className=" group relative mb-12 w-full max-w-[600px]">
           <Image
             src={`${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT GREEN.png`}
             alt="The Morris Cocktail Bar"
@@ -25,7 +25,7 @@ const Home = () => {
             className="w-full h-auto mb-4 transition-opacity duration-300 group-hover:opacity-0"
           />
           <Image
-            src={`${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_CHARCOAL.png`}
+            src={`${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_WHITE.png`}
             alt="The Morris Pub"
             width={300}
             height={150}

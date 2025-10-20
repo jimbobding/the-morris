@@ -10,8 +10,8 @@ type VenueHeaderProps = {
   image?: string;
   bgImage?: string;
   icon?: string;
-  bgColor?: string; // new prop for solid background color
-  textColor?: string; // new prop for text color
+  bgColor?: string; // solid background
+  textColor?: string; // text colour
 };
 
 export default function VenueHeader({
@@ -20,14 +20,14 @@ export default function VenueHeader({
   image,
   bgImage,
   icon,
-  bgColor = "#72233F", // fallback primary color
-  textColor = "#FF9B7A", // fallback text color
+  bgColor = "#72233F",
+  textColor = "#FF9B7A",
 }: VenueHeaderProps) {
   return (
     <div
       className="p-8 flex flex-col items-center text-center"
       style={{
-        backgroundColor: bgColor, // solid color
+        backgroundColor: bgColor,
         backgroundImage: bgImage ? `url("${bgImage}")` : undefined,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -39,7 +39,7 @@ export default function VenueHeader({
           alt={name}
           width={400}
           height={200}
-          className="mb-6 "
+          className="mb-6"
         />
       )}
 

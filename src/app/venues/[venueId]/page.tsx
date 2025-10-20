@@ -2,8 +2,9 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
+import Navbar from "@/components/Navbar/Navbar";
+import Footer from "@/components/Footer";
 import MenuSection from "@/components/MenuSection";
-import OpeningHours from "@/components/OpeningHours";
 import ContactInfoSection from "@/components/ContactInfo";
 import VenueHeader from "@/components/VenueHeader";
 import GallerySection from "@/components/GallerySection";
@@ -21,7 +22,6 @@ export default function VenuePage() {
     );
   }
 
-  // Pull colors directly from venueData
   const colors = {
     background: venue.backgroundColor,
     text: venue.textColor,
@@ -30,6 +30,14 @@ export default function VenuePage() {
 
   return (
     <>
+      {/* Dynamic Navbar */}
+
+      <Navbar
+        bgColor={colors.text} // primary color → background
+        textColor={venue.backgroundColor} // secondary color → text
+        borderColor={colors.border}
+      />
+
       {/* Header */}
       <VenueHeader
         name={venue.name}
@@ -53,8 +61,8 @@ export default function VenuePage() {
       {/* Menu Section */}
       {venue.menu && (
         <MenuSection
-          food={venue.menu?.food}
-          drinks={venue.menu?.drinks}
+          food={venue.menu.food}
+          drinks={venue.menu.drinks}
           menuBackground={venue.menuBackground}
           menuDescription={venue.menuDescription}
           menuGallery={venue.menuGallery}
@@ -67,17 +75,6 @@ export default function VenuePage() {
         />
       )}
 
-      {/* Opening Hours */}
-      {/* {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") && (
-        <OpeningHours
-          venueType={venue.venueType}
-          hours={venue.hours}
-          openingHoursBgImage={venue.openingHoursBgImage}
-          textColor={colors.text} // primary
-          outlineColor="#72233F" // secondary
-        />
-      )} */}
-
       {/* Contact Info */}
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") &&
         venue.contact && (
@@ -85,12 +82,18 @@ export default function VenuePage() {
             venueType={venue.venueType}
             contact={venue.contact}
             hours={venue.hours}
-            bgColor={venue.backgroundColor} // comes from venueData
-            textColor={venue.textColor} // comes from venueData
-            cardColor={venue.secondaryColor} // comes from venueData
-            borderColor={venue.borderColor} // comes from venueData
+            bgColor={venue.backgroundColor}
+            textColor={venue.textColor}
+            cardColor={venue.secondaryColor || venue.backgroundColor}
+            hoverColor={venue.borderColor}
           />
         )}
+
+      {/* Dynamic Footer */}
+      <Footer
+        bgColor={colors.border} // secondary colour
+        textColor={colors.text}
+      />
     </>
   );
 }
