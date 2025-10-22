@@ -33,10 +33,9 @@ export default function VenuePage() {
       {/* Dynamic Navbar */}
 
       <Navbar
-        bgColor={colors.text} // primary color → background
-        textColor={venue.backgroundColor} // secondary color → text
-        borderColor={colors.border}
-        navbarBorderColor={venue.navbarBorderColor}
+        bgColor={colors.text}
+        textColor={venue.backgroundColor}
+        navbarBorderColor={colors.border} // use this instead of borderColor
         hoverColor={venue.hoverColor}
       />
 
@@ -65,7 +64,7 @@ export default function VenuePage() {
         <MenuSection
           food={venue.menu.food}
           drinks={venue.menu.drinks}
-          menuBackground={venue.menuBackground}
+          menuBackground={venue.menuBackground || ""}
           menuDescription={venue.menuDescription}
           menuGallery={venue.menuGallery}
           venueData={{
@@ -81,13 +80,18 @@ export default function VenuePage() {
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") &&
         venue.contact && (
           <ContactInfoSection
-            venueSlug={venue.venueType} //
-            venueType={venue.venueType}
+            venueSlug={
+              (venue.venueType ?? "default") as
+                | "pub"
+                | "cocktail-bar"
+                | "private-hire"
+                | "default"
+            } // ensure type matches
             contact={venue.contact}
             hours={venue.hours}
             bgColor={venue.backgroundColor}
             textColor={venue.textColor}
-            cardColor={venue.secondaryColor || venue.backgroundColor}
+            cardColor={venue.backgroundColor} // remove secondaryColor
             hoverColor={venue.borderColor}
           />
         )}

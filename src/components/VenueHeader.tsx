@@ -6,12 +6,12 @@ import { motion } from "framer-motion";
 
 type VenueHeaderProps = {
   name: string;
-  description: string;
+  description?: string;
   image?: string;
   bgImage?: string;
   icon?: string;
-  bgColor?: string; // solid background
-  textColor?: string; // text colour
+  bgColor: string;
+  textColor: string;
 };
 
 export default function VenueHeader({

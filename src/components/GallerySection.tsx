@@ -8,7 +8,7 @@ type GallerySectionProps = {
   bgColor?: string; // NEW
   textColor?: string; // NEW
   galleryBgImage?: string;
-  images: readonly string[];
+  images?: string[];
   hours?: string;
   contact?: {
     phone?: string;

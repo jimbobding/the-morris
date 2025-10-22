@@ -14,6 +14,7 @@ type ContactInfoProps = {
   bgColor: string;
   textColor: string;
   cardColor: string;
+  hoverColor?: string;
   hours?: string[] | string;
 };
 

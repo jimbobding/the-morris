@@ -16,9 +16,14 @@ type MenuSectionProps = {
   food?: string;
   drinks?: string;
   menuBackground?: string;
-  venueData?: VenueData;
   menuDescription?: string;
   menuGallery?: string[];
+  venueData: {
+    venueType?: string;
+    backgroundColor: string;
+    textColor: string;
+    borderColor: string;
+  };
 };
 
 export default function MenuSection({
