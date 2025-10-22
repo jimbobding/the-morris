@@ -5,6 +5,7 @@ import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { LOGOS } from "@/constants/imagePaths";
+import { venueData } from "@/data/VenueData";
 
 type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 
@@ -18,15 +19,12 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
 
-  const hoverColors: Record<VenueSlug, string> = {
-    pub: "#B8860B", // golden amber
-    "cocktail-bar": "#FF5E5E", // neon red
-    "private-hire": "#FFD700", // gold
-    default: "#FFB6C1", // pink accent
-  };
+  // Pull hover color dynamically from dataset
+  const venueInfo = venueData[targetSlug as keyof typeof venueData];
+  const hoverColor =
+    venueInfo?.hoverColor || venueInfo?.borderColor || "#FFB6C1";
 
-  const hoverColor = hoverColors[targetSlug] || hoverColors.default;
-
+  // Handle logos
   const currentLogos = LOGOS[targetSlug] || LOGOS.default;
   const logoSrc = isHovered ? currentLogos.hover : currentLogos.default;
 
@@ -43,8 +41,8 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
 
   return (
     <ul className="flex items-center space-x-6">
-      {/* Nav links */}
       {navLinks.map(({ href, label }) => {
+        // Only show hash links if on /venues pages
         if (href.startsWith("#") && !pathname.startsWith("/venues"))
           return null;
 
@@ -53,22 +51,17 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
             <Link
               href={href}
               onClick={onClick}
-              className="relative inline-block px-2 py-1 transition-all duration-300"
-              style={{
-                color: textColor,
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = hoverColor;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = textColor;
-              }}
+              className="relative inline-block px-2 py-1 transition-colors duration-300 group"
+              style={
+                {
+                  color: textColor,
+                  "--hover-color": hoverColor,
+                } as React.CSSProperties
+              }
             >
               {label}
-              <span
-                className="absolute left-0 -bottom-0.5 h-[2px] transition-all duration-300 w-0 group-hover:w-full"
-                style={{ backgroundColor: hoverColor }}
-              ></span>
+              {/* Animated underline */}
+              <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
             </Link>
           </li>
         );

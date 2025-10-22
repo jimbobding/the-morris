@@ -7,18 +7,25 @@ import NavLinks from "./NavLinks";
 import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
 
+// Correct import
+import { venueData } from "@/data/venueData";
+
 type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 
 type NavbarProps = {
   bgColor?: string;
   textColor?: string;
   targetSlug?: VenueSlug;
+  navbarBorderColor?: string;
+  hoverColor?: string;
 };
 
 export default function Navbar({
-  bgColor = "#000",
-  textColor = "#fff",
-  targetSlug = "default",
+  bgColor,
+  textColor,
+  targetSlug,
+  hoverColor,
+  navbarBorderColor,
 }: NavbarProps) {
   const { isOpen, toggle, close } = useNavbarToggle();
   const pathname = usePathname();
@@ -27,41 +34,34 @@ export default function Navbar({
   const venueSlug =
     segments[1] === "venues" ? (segments[2] as VenueSlug) : "default";
 
-  // distinct accent (hover + border) colors per venue
-  const accentColors: Record<VenueSlug, string> = {
-    pub: "#B8860B", // golden amber
-    "cocktail-bar": "#FF5E5E", // neon red
-    "private-hire": "#FFD700", // bright gold
-    default: "#FFB6C1", // soft pink
-  };
+  // Get colors from dataset
+  const venueInfo = venueData[venueSlug] || venueData.landing;
 
-  const accent = accentColors[venueSlug] || accentColors.default;
+  const bg = bgColor || venueInfo.backgroundColor || "#000";
+  const text = textColor || venueInfo.textColor || "#fff";
+  const border = navbarBorderColor || venueInfo.borderColor || "#ccc";
 
   return (
     <nav
       className="px-6 py-3 sticky top-0 z-50 backdrop-blur-md transition-all duration-500"
       style={{
-        backgroundColor: bgColor,
-        color: textColor,
-        borderBottom: `3px solid ${accent}`,
+        backgroundColor: bg,
+        color: text,
+        borderBottom: `3px solid ${border}`,
       }}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        {/* Brand link */}
         <div className="text-lg font-semibold tracking-wide">
           <Link href="/">The Morris</Link>
         </div>
 
-        {/* Hamburger (mobile) */}
         <HamburgerButton isOpen={isOpen} toggle={toggle} />
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex space-x-6 text-sm">
-          <NavLinks targetSlug={venueSlug} textColor={textColor} />
+          <NavLinks targetSlug={venueSlug} textColor={text} />
         </ul>
       </div>
 
-      {/* Mobile menu */}
       {isOpen && <MobileMenu close={close} />}
     </nav>
   );

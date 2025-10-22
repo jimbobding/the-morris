@@ -36,6 +36,8 @@ export default function VenuePage() {
         bgColor={colors.text} // primary color → background
         textColor={venue.backgroundColor} // secondary color → text
         borderColor={colors.border}
+        navbarBorderColor={venue.navbarBorderColor}
+        hoverColor={venue.hoverColor}
       />
 
       {/* Header */}
@@ -79,6 +81,7 @@ export default function VenuePage() {
       {(venue.venueType === "pub" || venue.venueType === "cocktail-bar") &&
         venue.contact && (
           <ContactInfoSection
+            venueSlug={venue.venueType} //
             venueType={venue.venueType}
             contact={venue.contact}
             hours={venue.hours}

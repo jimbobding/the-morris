@@ -2,38 +2,23 @@
 
 import React from "react";
 import { usePathname } from "next/navigation";
+import { venueData } from "@/data/VenueData";
 
 export default function Footer() {
   const pathname = usePathname();
   const segments = pathname.split("/");
-  const venue = segments[1] === "venues" ? segments[2] : "default";
+  const venueSlug =
+    segments[1] === "venues"
+      ? (segments[2] as keyof typeof venueData)
+      : "default";
 
-  // 🎨 Venue color palette
-  const colorMap: Record<string, { bg: string; text: string; accent: string }> =
-    {
-      pub: {
-        bg: "#000000",
-        text: "#FFFFFF",
-        accent: "#B8860B", // gold
-      },
-      "cocktail-bar": {
-        bg: "#2B0000",
-        text: "#FFF8E1",
-        accent: "#FF5E5E", // neon red
-      },
-      "private-hire": {
-        bg: "#1A1A1A",
-        text: "#FFFFFF",
-        accent: "#FFD700", // bright gold
-      },
-      default: {
-        bg: "#111111",
-        text: "#FFFFFF",
-        accent: "#FFB6C1", // soft pink
-      },
-    };
+  // Pull colors from the dataset
+  const venue = venueData[venueSlug] || venueData.default;
+  // const bg = venue.backgroundColor || "#111111";
+  const bg = venue.footerBgColor || venue.backgroundColor || "#111111";
 
-  const { bg, text, accent } = colorMap[venue] || colorMap.default;
+  const text = venue.textColor || "#FFFFFF";
+  const accent = venue.hoverColor || venue.borderColor || "#FFB6C1"; // use hover color if present
 
   return (
     <footer
@@ -49,16 +34,12 @@ export default function Footer() {
         Visit our sister venue{" "}
         <a
           href="https://www.blinkerbar.co.uk/"
-          className="inline-block px-4 py-2 border-b-2 border-transparent transition-all duration-300 hover:-translate-y-1"
-          style={{
-            color: accent,
-            borderBottomColor: "transparent",
-          }}
-          onMouseEnter={(e) =>
-            ((e.target as HTMLElement).style.borderBottomColor = accent)
-          }
-          onMouseLeave={(e) =>
-            ((e.target as HTMLElement).style.borderBottomColor = "transparent")
+          className="inline-block px-4 py-2 border-b-2 border-transparent transition-all duration-300 hover:border-b-[var(--accent-color)]"
+          style={
+            {
+              color: accent,
+              "--accent-color": accent,
+            } as React.CSSProperties
           }
           target="_blank"
           rel="noopener noreferrer"

@@ -38,6 +38,8 @@ export const venueData = {
     backgroundColor: "#000000",
     textColor: "#FFFFFF",
     borderColor: "#FFFFFF",
+    navbarBorderColor: "#B8860B",
+    hoverColor: "#FFCC00",
 
     gallery: [
       `${PUB_BASE}/other-assets/IMG_1963.jpeg`,
@@ -81,6 +83,9 @@ export const venueData = {
     backgroundColor: "#72233F",
     textColor: "#FF9B7A",
     borderColor: "#FF9B7A",
+    navbarBorderColor: "#FF5E5E",
+    hoverColor: "#D5654D",
+    footerBgColor: "#2B0000",
 
     gallery: [
       `${COCKTAIL_BASE}/other-assets/IMG_2044.jpeg`,
@@ -118,6 +123,7 @@ export const venueData = {
     backgroundColor: "#BDBDB2",
     textColor: "#D5654D",
     borderColor: "#D5654D",
+    navbarBorderColor: "#FFFFFF",
 
     gallery: [],
 
@@ -132,5 +138,6 @@ export const venueData = {
     name: "Landing Page",
     backgroundColor: "#2B3036",
     textColor: "#F1E8E0",
+    hoverColor: "#BDBDB2",
   },
 } as const;

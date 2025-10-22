@@ -1,9 +1,11 @@
 "use client";
 
+import React from "react";
+import { venueData } from "@/data/VenueData";
+
 type ContactInfoProps = {
-  venueType: "pub" | "cocktail-bar" | "private-hire";
+  venueSlug: "pub" | "cocktail-bar" | "private-hire" | "default";
   contact?: {
-    // <-- make optional
     phone?: string;
     email?: string;
     address?: string;
@@ -12,19 +14,24 @@ type ContactInfoProps = {
   bgColor: string;
   textColor: string;
   cardColor: string;
-  hoverColor: string;
   hours?: string[] | string;
 };
 
 export default function ContactInfoSection({
+  venueSlug,
   contact,
   bgColor,
   textColor,
   cardColor,
-  hoverColor,
   hours,
 }: ContactInfoProps) {
-  if (!contact) return null; // prevents crash
+  if (!contact) return null;
+
+  // Pull hover color dynamically from dataset
+  const venueInfo = venueData[venueSlug];
+
+  const hoverColor =
+    venueInfo?.hoverColor || venueInfo?.borderColor || textColor;
 
   return (
     <section
@@ -66,29 +73,53 @@ export default function ContactInfoSection({
 
         {/* Contact Info */}
         <div
-          className="p-8 rounded-2xl border shadow-lg backdrop-blur-md"
+          className="p-8 rounded-2xl border shadow-lg backdrop-blur-md flex flex-col gap-4"
           style={{ backgroundColor: cardColor, borderColor: textColor }}
         >
           <h2 className="text-3xl font-bold mb-6 uppercase tracking-widest">
             Visit Us
           </h2>
 
-          <p className="text-lg mb-6 whitespace-pre-line">
-            {contact.address || "Address not available"}
-          </p>
+          {contact.address && (
+            <p className="text-lg whitespace-pre-line">📍 {contact.address}</p>
+          )}
 
-          <p className="mb-2">
-            📞 <span>{contact.phone || "-"}</span>
-          </p>
+          {contact.phone && (
+            <a
+              href={`tel:${contact.phone}`}
+              className="text-lg transition-colors duration-300"
+              style={{ color: textColor }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+            >
+              📞 {contact.phone}
+            </a>
+          )}
 
-          <p className="mb-2">
-            📧 <span>{contact.email || "-"}</span>
-          </p>
+          {contact.email && (
+            <a
+              href={`mailto:${contact.email}`}
+              className="text-lg transition-colors duration-300"
+              style={{ color: textColor }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+            >
+              📧 {contact.email}
+            </a>
+          )}
 
           {contact.instagram && (
-            <p className="flex items-center gap-2">
-              📷 <span>{contact.instagram}</span>
-            </p>
+            <a
+              href={`https://instagram.com/${contact.instagram.replace("@", "")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-lg transition-colors duration-300"
+              style={{ color: textColor }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
+              onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+            >
+              📷 {contact.instagram}
+            </a>
           )}
         </div>
       </div>
