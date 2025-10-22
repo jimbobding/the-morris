@@ -8,7 +8,7 @@ import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
 
 // Correct import
-import { venueData } from "@/data/venueData";
+import { venueData } from "@/data/VenueData";
 
 type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 
