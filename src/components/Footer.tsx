@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { venueData } from "@/data/venueData";
+import { venueData } from "@/data/VenueData";
 
 export default function Footer() {
   const pathname = usePathname();
