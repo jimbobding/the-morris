@@ -97,10 +97,7 @@ export default function VenuePage() {
         )}
 
       {/* Dynamic Footer */}
-      <Footer
-        bgColor={colors.border} // secondary colour
-        textColor={colors.text}
-      />
+      <Footer />
     </>
   );
 }

@@ -36,7 +36,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
     { href: "#gallery", label: "Gallery" },
     { href: "#menu", label: "Menu" },
     { href: "#contact", label: "Contact" },
-    { href: "#opening", label: "Opening Hours" },
+    // { href: "#opening", label: "Opening Hours" },
   ];
 
   return (
