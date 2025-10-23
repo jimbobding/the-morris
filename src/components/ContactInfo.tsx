@@ -2,6 +2,7 @@
 
 import React from "react";
 import { venueData } from "@/data/VenueData";
+import { AiFillInstagram } from "react-icons/ai";
 
 type ContactInfoProps = {
   venueSlug: "pub" | "cocktail-bar" | "private-hire" | "default";
@@ -29,6 +30,7 @@ export default function ContactInfoSection({
   if (!contact) return null;
 
   // Pull hover color dynamically from dataset
+
   const venueInfo = venueData[venueSlug];
 
   const hoverColor =
@@ -109,18 +111,15 @@ export default function ContactInfoSection({
               📧 {contact.email}
             </a>
           )}
-
           {contact.instagram && (
             <a
               href={`https://instagram.com/${contact.instagram.replace("@", "")}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-lg transition-colors duration-300"
-              style={{ color: textColor }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = hoverColor)}
-              onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+              className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
             >
-              📷 {contact.instagram}
+              <AiFillInstagram className="w-5 h-5 " />
+              <span>{contact.instagram}</span>
             </a>
           )}
         </div>
