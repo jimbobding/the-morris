@@ -9,7 +9,8 @@ const PLACEHOLDER = "/menus/placeholder.pdf";
 
 export type VenueDataType = {
   name: string;
-  venueType?: "pub" | "cocktail-bar" | "private-hire";
+  venueType?: "cocktail-bar" | "pub" | "private-hire" | "default";
+
   description?: string;
   blurb?: string;
   hours?: string[] | string;

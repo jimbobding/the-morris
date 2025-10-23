@@ -8,7 +8,11 @@ type Props = {
 export default function MobileMenu({ close }: Props) {
   return (
     <ul className="md:hidden mt-3 space-y-2 text-sm">
-      <NavLinks onClick={close} />
+      <NavLinks
+        targetSlug="default" // or use a dynamic value like venueSlug if available
+        textColor="#fff" // or another color that fits your theme
+        onClick={close}
+      />
     </ul>
   );
 }

@@ -5,12 +5,12 @@ import { Hanken_Grotesk } from "next/font/google";
 
 const hanken = Hanken_Grotesk({ weight: "400", subsets: ["latin"] });
 
-type VenueData = {
-  venueType: "pub" | "cocktail-bar" | "private-hire";
-  borderColor?: string;
-  backgroundColor?: string;
-  textColor?: string;
-};
+// type VenueData = {
+//   venueType: "pub" | "cocktail-bar" | "private-hire";
+//   borderColor?: string;
+//   backgroundColor?: string;
+//   textColor?: string;
+// };
 
 type MenuSectionProps = {
   food?: string;

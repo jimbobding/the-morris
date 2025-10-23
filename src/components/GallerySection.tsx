@@ -22,7 +22,7 @@ export default function GallerySection({
   galleryBgImage,
   bgColor = "#000", // fallback black
   textColor = "#fff", // fallback white
-  images,
+  images = [],
 }: GallerySectionProps) {
   return (
     <section id="gallery">

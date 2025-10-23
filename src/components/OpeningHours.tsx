@@ -17,8 +17,7 @@ export default function OpeningHours({
   hours,
   venueType,
   openingHoursBgImage,
-  address,
-  phone,
+
   textColor = "#FF9B7A", // primary
   outlineColor = "#72233F", // secondary
 }: OpeningHoursSectionProps) {

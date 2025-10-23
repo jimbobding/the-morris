@@ -35,8 +35,8 @@ export default function VenuePage() {
       <Navbar
         bgColor={colors.text}
         textColor={venue.backgroundColor}
-        navbarBorderColor={colors.border} // use this instead of borderColor
         hoverColor={venue.hoverColor}
+        navbarBorderColor={venue.navbarBorderColor || "#FFCC00"}
       />
 
       {/* Header */}

@@ -23,8 +23,7 @@ type NavbarProps = {
 export default function Navbar({
   bgColor,
   textColor,
-  targetSlug,
-  hoverColor,
+
   navbarBorderColor,
 }: NavbarProps) {
   const { isOpen, toggle, close } = useNavbarToggle();

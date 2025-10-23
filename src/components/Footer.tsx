@@ -3,7 +3,12 @@
 import { usePathname } from "next/navigation";
 import { venueData } from "@/data/VenueData";
 
-export default function Footer() {
+type FooterProps = {
+  bgColor?: string;
+  textColor?: string;
+};
+
+export default function Footer({ bgColor, textColor }: FooterProps) {
   const pathname = usePathname();
   const segments = pathname.split("/");
   const venueSlug =
@@ -13,8 +18,8 @@ export default function Footer() {
 
   const venue = venueData[venueSlug] || venueData.landing;
 
-  const bg = venue.footBgColor || venue.backgroundColor || "#111111";
-  const text = venue.textColor || "#FFFFFF";
+  const bg = bgColor || venue.footBgColor || venue.backgroundColor || "#111111";
+  const text = textColor || venue.textColor || "#FFFFFF";
   const accent = venue.hoverColor || venue.borderColor || "#FFB6C1";
 
   return (

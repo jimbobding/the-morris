@@ -36,6 +36,7 @@ export default function ContactInfoSection({
 
   return (
     <section
+      id="contact"
       className="relative w-full py-20 px-6"
       style={{ backgroundColor: bgColor, color: textColor }}
     >
