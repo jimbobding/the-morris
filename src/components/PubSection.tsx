@@ -21,10 +21,10 @@ export default function PubSection() {
       {/* Paragraph */}
       <p className="text-center max-w-2xl mb-6">
         Our ground floor is everything a pub should be — familiar, welcoming and
-        full of character. We pour the best of Manchester’s brewing scene
+        full of character. We pour the best of Manchester&apos;s brewing scene
         alongside a great pint of Guinness and a carbonated spritz on tap, all
         set to an easy-going soundtrack that keeps the conversation flowing,
-        whether it's a quiet midweek pint or a busy Saturday catch-up,
+        whether it&apos;s a quiet midweek pint or a busy Saturday catch-up,
         Downstairs is where The Morris comes alive.
       </p>
 
