@@ -1,14 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { PUB_BASE } from "@/constants/imagePaths";
 
 export default function PubSection() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-black text-[#F1E8E0] px-4 sm:px-6 py-24">
       {/* Title */}
-      <h2 className="text-4xl font-bold mb-6 text-center">
-        Downstairs - The Pub
-      </h2>
+      <span className="mb-8 text-4xl font-bold text-center">Upstairs</span>
+      <div className="flex flex-col items-center mb-6">
+        <Image
+          src="/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_WHITE.png" // replace with your PNG path
+          alt="Cocktail Icon"
+          width={100}
+          height={100}
+          className="mb-4"
+        />
+      </div>
 
       {/* Paragraph */}
       <p className="text-center max-w-2xl mb-6">
@@ -69,8 +77,9 @@ export default function PubSection() {
 
       {/* Menu link */}
       <Link
-        href="/menu" // replace with your menu page or PDF link
-        className="mt-4 inline-block bg-[#F1E8E0] text-black font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition-colors duration-300"
+        href={`${PUB_BASE}/menu/PUB_MENU_30.10.25.pdf`}
+        target="_blank" // replace with your menu page or PDF link
+        className="mt-4 inline-block bg-[#F1E8E0] text-black font-semibold py-3 px-6 rounded-lg hover:bg-black hover:text-white  transition-colors duration-300"
       >
         View the Menu
       </Link>

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { COCKTAIL_BASE } from "@/constants/imagePaths";
 
 export default function CocktailSection() {
   return (
@@ -9,9 +10,16 @@ export default function CocktailSection() {
       style={{ backgroundColor: "#72233F", color: "#FF9B7A" }}
     >
       {/* Title */}
-      <h2 className="text-4xl font-bold mb-6 text-center">
-        Upstairs - The Cocktail Bar
-      </h2>
+      <span className="text-4xl font-bold text-center mb-8">Upstairs</span>
+      <div className="flex flex-col items-center mb-6">
+        <Image
+          src="/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_WHITE.png" // replace with your PNG path
+          alt="Cocktail Icon"
+          width={100}
+          height={100}
+          className="mb-4"
+        />
+      </div>
 
       {/* Paragraph */}
       <p className="text-center max-w-2xl mb-6">
@@ -73,8 +81,9 @@ export default function CocktailSection() {
 
       {/* Menu link */}
       <Link
-        href="/menu" // replace with the cocktail menu page or PDF link
-        className="mt-4 inline-block bg-[#FF9B7A] text-[#72233F] font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition-colors duration-300"
+        href={`${COCKTAIL_BASE}/menu/FUNKY_VOL1_23.09.25.pdf`}
+        target="_blank" // replace with the cocktail menu page or PDF link
+        className="mt-4 inline-block bg-[#FF9B7A] text-[#72233F] font-semibold py-3 px-6 rounded-lg hover:bg-[#72233F] hover:text-[#FF9B7A] transition-colors duration-300"
       >
         View the Menu
       </Link>
