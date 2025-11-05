@@ -1,88 +1,23 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { venues } from "@/data/Venues";
-import { PUB_BASE, COCKTAIL_BASE } from "@/constants/imagePaths";
+"use client";
 
-const Home = () => {
+import Navbar from "@/components/Navbar/Navbar";
+import HeroSection from "@/components/HeroSection";
+import PubSection from "@/components/PubSection";
+import CocktailSection from "@/components/CocktailSection";
+import LoftSection from "@/components/LoftSection";
+import Footer from "@/components/Footer";
+import TheMorris from "@/components/TheMorris";
+
+export default function HomePage() {
   return (
-    <div
-      className="relative min-h-screen w-full overflow-hidden"
-      style={{
-        backgroundColor: "#2B3036", // charcoal background
-        color: "#F1E8E0", // linen text
-      }}
-    >
-      {/* Foreground Content */}
-      <div className="relative z-20 flex flex-col justify-center items-center px-4 sm:px-6 py-16 sm:py-24">
-        {/* Hero Logo (static + hover swap) */}
-        <div className=" group relative mb-12 w-full max-w-[600px]">
-          <Image
-            src={`${COCKTAIL_BASE}/logos/THE MORRIS_COCKTAIL BAR LOGO_LIGHT GREEN.png`}
-            alt="The Morris Cocktail Bar"
-            width={600}
-            height={300}
-            className="w-full h-auto mb-4 transition-opacity duration-300 group-hover:opacity-0"
-          />
-          <Image
-            src={`${PUB_BASE}/logos/THE MORRIS_PUB LOGO_SKEWED_WHITE.png`}
-            alt="The Morris Pub"
-            width={300}
-            height={150}
-            className="object-contain mx-auto absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          />
-        </div>
-
-        {/* Heading */}
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-          Welcome to The Morris
-        </h1>
-
-        {/* Paragraph */}
-        <p className="text-center max-w-2xl mb-12 text-base sm:text-lg px-4">
-          Three floors of good taste. Downstairs we celebrate the comfort of a
-          proper pub — local pints, easy conversation and timeless atmosphere.
-          Upstairs we shake retro-spirited cocktails in a room full of
-          character, music and charm. High above, The Loft transforms for the
-          occasion — a versatile events space built for brands, parties and
-          everything in between.
-        </p>
-
-        {/* Venue Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full max-w-4xl px-4">
-          {venues.map(({ id, label, logo, hoverLogo }) => (
-            <Link
-              key={id}
-              href={`/venues/${id}`}
-              className="group relative rounded-2xl overflow-hidden shadow-md transition-all duration-500 hover:scale-105"
-              style={{
-                backgroundColor: "#000000", // black card background
-              }}
-            >
-              <div className="relative h-56 flex items-center justify-center transition-colors duration-300 ease-in-out p-6">
-                {/* Normal logo */}
-                <Image
-                  src={logo}
-                  alt={label}
-                  width={300}
-                  height={150}
-                  className="absolute inset-0 object-contain m-auto transition-opacity duration-300 ease-in-out group-hover:opacity-0 will-change-opacity"
-                />
-                {/* Hover logo */}
-                <Image
-                  src={hoverLogo}
-                  alt={`${label} hover`}
-                  width={300}
-                  height={150}
-                  className="absolute inset-0 object-contain m-auto opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100 will-change-opacity"
-                />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </div>
+    <main className="w-full overflow-x-hidden">
+      <Navbar />
+      <HeroSection />
+      <TheMorris />
+      <PubSection />
+      <CocktailSection />
+      <LoftSection />
+      <Footer />
+    </main>
   );
-};
-
-export default Home;
+}
