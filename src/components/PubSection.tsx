@@ -7,7 +7,7 @@ export default function PubSection() {
   return (
     <section className="min-h-screen flex flex-col justify-center items-center bg-black text-[#F1E8E0] px-4 sm:px-6 py-24">
       {/* Title */}
-      <span className="mb-8 text-4xl font-bold text-center">Upstairs</span>
+      <span className="mb-8 text-4xl font-bold text-center">Downstairs</span>
       <div className="flex flex-col items-center mb-6">
         <Image
           src="/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_WHITE.png" // replace with your PNG path

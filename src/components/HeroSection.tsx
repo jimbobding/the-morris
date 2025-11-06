@@ -7,8 +7,7 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex justify-center items-center overflow-hidden">
       {/* Background image */}
       <Image
-        src="/images/venue-images/pub/backgrounds/solo_diamond_charcoal.jpg
-"
+        src="/images/venue-images/pub/backgrounds/solo_diamond_charcoal.jpg"
         alt="Charcoal Background"
         fill // makes the image cover the parent section
         style={{ objectFit: "cover", objectPosition: "center" }}
@@ -26,7 +25,7 @@ export default function HeroSection() {
           width={600}
           height={200}
           priority
-          className="w-auto max-w-[80%] h-auto object-contain"
+          className="w-auto max-w-[100%] h-auto object-contain"
         />
       </div>
     </section>
