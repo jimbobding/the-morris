@@ -33,9 +33,11 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   const nextSlug = venueOrder[(currentIndex + 1) % venueOrder.length];
 
   const navLinks = [
-    { href: "#gallery", label: "Gallery" },
-    { href: "#menu", label: "Menu" },
-    { href: "#contact", label: "Contact" },
+    { href: "#theMorris", label: "The Morris" },
+    { href: "#downstairs", label: "Downstairs" },
+    { href: "#upstairs", label: "Upstairs" },
+    { href: "#theLoft", label: "The Loft" },
+    { href: "#FreindsMorris", label: "Freinds of the Morris" },
     // { href: "#opening", label: "Opening Hours" },
   ];
 
@@ -43,8 +45,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
     <ul className="flex items-center space-x-6">
       {navLinks.map(({ href, label }) => {
         // Only show hash links if on /venues pages
-        if (href.startsWith("#") && !pathname.startsWith("/venues"))
-          return null;
+        if (href.startsWith("#") && !pathname.startsWith("/")) return null;
 
         return (
           <li key={label}>
