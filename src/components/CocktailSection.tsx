@@ -13,7 +13,7 @@ export default function CocktailSection() {
       <span className="text-4xl font-bold text-center mb-8">Upstairs</span>
       <div className="flex flex-col items-center mb-6">
         <Image
-          src="/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_WHITE.png" // replace with your PNG path
+          src="/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_WHITE.png"
           alt="Cocktail Icon"
           width={100}
           height={100}
@@ -31,6 +31,23 @@ export default function CocktailSection() {
         the glassware to the playlist — is designed for good taste and good
         times.
       </p>
+
+      {/* Opening Hours Section (low key, optional) */}
+      <div
+        className="text-center border border-[#FF9B7A]/40 rounded-lg px-6 py-4 mb-10 max-w-md mx-auto backdrop-blur-sm"
+        style={{
+          backgroundColor: "rgba(255, 155, 122, 0.08)",
+        }}
+      >
+        <h3 className="text-lg font-semibold mb-2 text-[#FF9B7A]">
+          Opening Hours
+        </h3>
+        <p className="text-sm leading-relaxed">
+          <strong>Wednesday – Friday:</strong> 5pm – Late <br />
+          <strong>Saturday:</strong> 3pm – Late <br />
+          <strong>Sunday – Tuesday:</strong> Closed
+        </p>
+      </div>
 
       {/* Diamond under paragraph */}
       <div className="mb-12">
@@ -82,7 +99,7 @@ export default function CocktailSection() {
       {/* Menu link */}
       <Link
         href={`${COCKTAIL_BASE}/menu/FUNKY_VOL1_23.09.25.pdf`}
-        target="_blank" // replace with the cocktail menu page or PDF link
+        target="_blank"
         className="mt-4 inline-block bg-[#FF9B7A] text-[#72233F] font-semibold py-3 px-6 rounded-lg hover:bg-[#72233F] hover:text-[#FF9B7A] transition-colors duration-300"
       >
         View the Menu

@@ -10,8 +10,8 @@ export default function PubSection() {
       <span className="mb-8 text-4xl font-bold text-center">Downstairs</span>
       <div className="flex flex-col items-center mb-6">
         <Image
-          src="/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_WHITE.png" // replace with your PNG path
-          alt="Cocktail Icon"
+          src="/images/venue-images/pub/logos/THE MORRIS_PUB HORIZONTAL LOGO_WHITE.png"
+          alt="Pub Icon"
           width={100}
           height={100}
           className="mb-4"
@@ -27,6 +27,23 @@ export default function PubSection() {
         whether it&apos;s a quiet midweek pint or a busy Saturday catch-up,
         Downstairs is where The Morris comes alive.
       </p>
+
+      {/* Opening Hours Section */}
+      <div
+        className="text-center border border-[#F1E8E0]/40 rounded-lg px-6 py-4 mb-10 max-w-md mx-auto backdrop-blur-sm"
+        style={{
+          backgroundColor: "rgba(241, 232, 224, 0.08)", // subtle translucent background
+        }}
+      >
+        <h3 className="text-lg font-semibold mb-2 text-[#F1E8E0]">
+          Opening Hours
+        </h3>
+        <p className="text-sm leading-relaxed">
+          <strong>Monday – Friday:</strong> 12pm – 11pm <br />
+          <strong>Saturday:</strong> 11am – 12am <br />
+          <strong>Sunday:</strong> 12pm – 10pm
+        </p>
+      </div>
 
       {/* Diamond under paragraph */}
       <div className="mb-12">
@@ -78,8 +95,8 @@ export default function PubSection() {
       {/* Menu link */}
       <Link
         href={`${PUB_BASE}/menu/PUB_MENU_30.10.25.pdf`}
-        target="_blank" // replace with your menu page or PDF link
-        className="mt-4 inline-block bg-[#F1E8E0] text-black font-semibold py-3 px-6 rounded-lg hover:bg-black hover:text-white  transition-colors duration-300"
+        target="_blank"
+        className="mt-4 inline-block bg-[#F1E8E0] text-black font-semibold py-3 px-6 rounded-lg hover:bg-black hover:text-white transition-colors duration-300"
       >
         View the Menu
       </Link>
