@@ -20,14 +20,16 @@ export default function MatesMorris() {
         className="text-center max-w-2xl mb-6"
         style={{ WebkitTextStroke: "0.5px rgba(0,0,0,0.5)" }}
       >
-        Mates of Morris A little club for our regulars and the ones who feel
-        like they already are. Mates of Morris is our way of saying thanks — a
-        nod to the familiar faces, the friends who bring friends, and the ones
-        who make this place what it is. Members get first word on events,
-        special menus and the odd perk or two (including our Sunday offer). It’s
-        not a loyalty card — it’s more of a handshake. Sign up, stay in the
-        loop, and become a proper mate of The Morris. Sign up through the qr
-        code to receive your keyring!
+        <p>
+          Mates of Morris is a little club for our regulars and the ones who
+          feel like they already are. Mates of Morris is our way of saying
+          thanks — a nod to the familiar faces, the friends who bring friends,
+          and the ones who make this place what it is. Members get first word on
+          events, special menus, and the odd perk or two (including our Sunday
+          offer). It&apos;s not a loyalty card — it&apos;s more of a handshake.
+          Sign up, stay in the loop, and become a proper mate of The Morris.
+          Sign up through the QR code to receive your keyring!
+        </p>
       </p>
 
       <div className="mb-12">
