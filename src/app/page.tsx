@@ -7,6 +7,7 @@ import CocktailSection from "@/components/CocktailSection";
 import LoftSection from "@/components/LoftSection";
 import Footer from "@/components/Footer";
 import TheMorris from "@/components/TheMorris";
+import MatesMorris from "@/components/MatesMorris";
 
 export default function HomePage() {
   return (
@@ -17,6 +18,7 @@ export default function HomePage() {
       <PubSection />
       <CocktailSection />
       <LoftSection />
+      <MatesMorris />
       <Footer />
     </main>
   );
