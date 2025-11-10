@@ -39,9 +39,10 @@ export default function PubSection() {
           Opening Hours
         </h3>
         <p className="text-sm leading-relaxed">
-          <strong>Monday – Friday:</strong> 12pm – 11pm <br />
-          <strong>Saturday:</strong> 11am – 12am <br />
-          <strong>Sunday:</strong> 12pm – 10pm
+          <strong>Monday:</strong> Closed <br />
+          <strong>Tuesday - Thursday:</strong> 2pm – 11:30pm <br />
+          <strong>Fridayy - Saturday:</strong> 2pm – 1:30am <br />
+          <strong>Sunday:</strong> 2pm – 11pm
         </p>
       </div>
 

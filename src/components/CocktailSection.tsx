@@ -43,9 +43,10 @@ export default function CocktailSection() {
           Opening Hours
         </h3>
         <p className="text-sm leading-relaxed">
-          <strong>Wednesday – Friday:</strong> 5pm – Late <br />
-          <strong>Saturday:</strong> 3pm – Late <br />
-          <strong>Sunday – Tuesday:</strong> Closed
+          <strong>Monday:</strong> Closed <br />
+          <strong>Tuesday - Thursday:</strong> 4pm – 11:30pm <br />
+          <strong>Fridayy - Saturday:</strong> 4pm – 1:30am <br />
+          <strong>Sunday:</strong> 4pm – 11pm
         </p>
       </div>
 
