@@ -19,7 +19,7 @@ export default function MatesMorris() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/mldaenpy", {
+      const res = await fetch("https://formspree.io/f/manaylod", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -46,6 +46,7 @@ export default function MatesMorris() {
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#7A8F7A", color: "#F4EFE9" }}
+      id="Mates"
     >
       <h2
         className="text-4xl font-bold mb-6 text-center"

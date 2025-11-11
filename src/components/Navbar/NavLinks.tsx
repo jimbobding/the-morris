@@ -19,32 +19,24 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
 
-  // Pull hover color dynamically from dataset
   const venueInfo = venueData[targetSlug as keyof typeof venueData];
   const hoverColor =
     venueInfo?.hoverColor || venueInfo?.borderColor || "#FFB6C1";
 
-  // Handle logos
   const currentLogos = LOGOS[targetSlug] || LOGOS.default;
   const logoSrc = isHovered ? currentLogos.hover : currentLogos.default;
 
-  const venueOrder: VenueSlug[] = ["pub", "cocktail-bar"];
-  const currentIndex = venueOrder.indexOf(targetSlug);
-  const nextSlug = venueOrder[(currentIndex + 1) % venueOrder.length];
-
   const navLinks = [
-    { href: "#theMorris", label: "The Morris" },
-    { href: "#downstairs", label: "Downstairs" },
-    { href: "#upstairs", label: "Upstairs" },
-    { href: "#theLoft", label: "The Loft" },
-    { href: "#FreindsMorris", label: "Freinds of the Morris" },
-    // { href: "#opening", label: "Opening Hours" },
+    { href: "#Morris", label: "The Morris" },
+    { href: "#Downstairs", label: "Downstairs" },
+    { href: "#Upstairs", label: "Upstairs" },
+    { href: "#Loft", label: "The Loft" },
+    { href: "#Mates", label: "Mates of Morris" },
   ];
 
   return (
-    <ul className="flex items-center space-x-6">
+    <>
       {navLinks.map(({ href, label }) => {
-        // Only show hash links if on /venues pages
         if (href.startsWith("#") && !pathname.startsWith("/")) return null;
 
         return (
@@ -61,32 +53,30 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
               }
             >
               {label}
-              {/* Animated underline */}
               <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
             </Link>
           </li>
         );
       })}
 
-      {/* Venue swap logo */}
+      {/* Optional venue swap logo */}
       {pathname.startsWith("/venues") && (
         <li>
           <Link
-            href={`/venues/${nextSlug}`}
+            href={`/venues/${targetSlug === "pub" ? "cocktail-bar" : "pub"}`}
             className="block w-[120px] h-[40px] relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             <Image
               src={logoSrc}
-              alt={`${nextSlug} logo`}
+              alt="venue logo"
               fill
               className="object-contain"
-              priority
             />
           </Link>
         </li>
       )}
-    </ul>
+    </>
   );
 }

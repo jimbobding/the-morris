@@ -3,7 +3,7 @@ import React from "react";
 export default function AboutSection() {
   return (
     <section
-      id="about"
+      id="Morris"
       className="min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 py-24 bg-[#2B3036] text-[#F1E8E0]"
     >
       {/* Text Content above the video */}

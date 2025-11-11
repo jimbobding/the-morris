@@ -17,7 +17,7 @@ export default function LoftSection() {
     const data = new FormData(form);
 
     try {
-      const res = await fetch("https://formspree.io/f/xovyqvjy", {
+      const res = await fetch("https://formspree.io/f/mdkyopgd", {
         method: "POST",
         body: data,
         headers: { Accept: "application/json" },
@@ -44,6 +44,7 @@ export default function LoftSection() {
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#BDBDB2", color: "#000000" }}
+      id="Loft"
     >
       <h2 className="text-4xl font-bold mb-6 text-center">The Loft</h2>
 
@@ -128,6 +129,17 @@ export default function LoftSection() {
 
             <label className="flex flex-col">
               Number of Guests
+              <input
+                name="guests"
+                type="number"
+                min={1}
+                required
+                className="border p-2 rounded"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              Type of Booking
               <input
                 name="guests"
                 type="number"
