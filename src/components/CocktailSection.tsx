@@ -27,7 +27,7 @@ export default function CocktailSection() {
       </div>
 
       {/* Paragraph with funky border */}
-      <p className="text-center max-w-2xl mb-6 paragraph-funky">
+      <p className="text-center max-w-2xl mb-6 ">
         A cocktail bar with a retro spirit and modern edge. Carbonated
         cocktails, nostalgic flavours. Inspired by the creative energy of the
         Northern Quarter over the years, Upstairs is where nostalgia meets

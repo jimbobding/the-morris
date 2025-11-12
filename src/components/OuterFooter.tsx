@@ -27,7 +27,7 @@ export default function OuterFooter() {
       >
         <FaInstagram className="text-[#F4EFE9] group-hover:text-pink-400 transition-colors duration-200" />
         <span className="group-hover:text-pink-400 transition-colors duration-200">
-          @themorrisvenue
+          @themorris.nq
         </span>
       </Link>
     </div>

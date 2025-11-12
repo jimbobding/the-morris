@@ -1,6 +1,5 @@
 import "./globals.css";
 import { Hanken_Grotesk } from "next/font/google";
-import type { Metadata } from "next";
 
 const hankenGrotesk = Hanken_Grotesk({
   subsets: ["latin"],
@@ -9,12 +8,9 @@ const hankenGrotesk = Hanken_Grotesk({
   display: "swap",
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "The Morris",
   description: "Manchester venue",
-  icons: {
-    icon: [{ url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" }],
-  },
 };
 
 export default function RootLayout({
@@ -25,12 +21,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* fallback just in case metadata doesn’t render favicon */}
+        {/* ✅ Absolute simplest, most reliable favicon setup */}
         <link
           rel="icon"
-          href="/favicon-96x96.png"
-          type="image/png"
+          href="/THE_MORRIS_PUB_HORIZONTAL_LOGO_WHITE-removebg-preview.png"
           sizes="96x96"
+          type="image/png"
         />
       </head>
       <body className={hankenGrotesk.className}>{children}</body>
