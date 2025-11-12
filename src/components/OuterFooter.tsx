@@ -15,12 +15,12 @@ export default function OuterFooter() {
     >
       {/* Address */}
       <p className="text-sm md:text-base mb-2">
-        The Morris, 123 Thomas Street, Manchester, M4 1XX
+        The Morris, 57 Thomas Street, Manchester, M4 1NA
       </p>
 
       {/* Instagram */}
       <Link
-        href="https://www.instagram.com/themorrisvenue"
+        href="https://www.instagram.com/themorris.nq"
         target="_blank"
         rel="noopener noreferrer"
         className="group inline-flex items-center justify-center space-x-2 text-sm md:text-base font-semibold transition-transform duration-200 hover:scale-110"

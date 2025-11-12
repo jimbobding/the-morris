@@ -80,21 +80,21 @@ export default function MatesMorris() {
 
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Image
-          src={`${MATES}/pics/guineesScratchings.jpeg`}
+          src={`${MATES}/pics/LSP_Mo25PubLSP_0250.jpg`}
           alt="Scratchings and Guinness"
           width={280}
           height={100}
           className="rounded-lg border border-gray-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
         />
         <Image
-          src={`${MATES}/pics/guinessDrinking.jpeg`}
+          src={`${MATES}/pics/LSP_Mo25InExLSP_0577.jpg`}
           width={280}
           height={100}
           alt="Friends drinking Guinness"
           className="rounded-lg border border-gray-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
         />
         <Image
-          src={`${MATES}/pics/tableDrinks.jpeg`}
+          src={`${MATES}/pics/LSP_Mo25CockLSP_9723.jpg`}
           width={280}
           height={100}
           alt="Drinks on the table"
@@ -119,7 +119,7 @@ export default function MatesMorris() {
         }}
         className="mt-4 inline-block bg-[#F4EFE9] text-[#7A8F7A] font-semibold py-3 px-6 rounded-lg border-2 border-[#7A8F7A] transition-colors duration-300 hover:bg-[#7A8F7A] hover:text-[#F4EFE9]"
       >
-        {isOpen ? "Close Form" : "Join the Mates Club"}
+        {isOpen ? "Close Form" : "Become a Mate"}
       </button>
 
       {isOpen && (
