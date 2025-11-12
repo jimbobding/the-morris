@@ -101,7 +101,7 @@ export default function LoftSection() {
         }}
         className="mt-4 inline-block bg-[#000000] text-[#BDBDB2] font-semibold py-3 px-6 rounded-lg transition-colors duration-300 hover:bg-[#BDBDB2] hover:text-[#000000]"
       >
-        {isOpen ? "Close Form" : "Make a Booking"}
+        {isOpen ? "Close Form" : "Make an Enquiry"}
       </button>
 
       {/* Booking form */}

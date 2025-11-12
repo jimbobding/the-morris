@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -12,6 +14,8 @@ export default function CocktailSection() {
     >
       {/* Title */}
       <span className="text-4xl font-bold text-center mb-8">Upstairs</span>
+
+      {/* Logo */}
       <div className="flex flex-col items-center mb-6">
         <Image
           src="/images/venue-images/cocktail-bar/logos/THE MORRIS_COCKTAIL BAR LOGO_WHITE.png"
@@ -22,8 +26,18 @@ export default function CocktailSection() {
         />
       </div>
 
-      {/* Paragraph */}
-      <p className="text-center max-w-2xl mb-6">
+      {/* Paragraph with funky border */}
+      <p
+        className="text-center max-w-2xl mb-6 paragraph-funky"
+        // style={{
+        //   border: "3px solid #FF9B7A",
+        //   borderRadius: "16px",
+        //   padding: "1.5rem",
+        //   outline: "2px dashed #FFDC7A",
+        //   outlineOffset: "4px",
+        //   boxShadow: "0 0 10px #FF9B7A inset",
+        // }}
+      >
         A cocktail bar with a retro spirit and modern edge. Carbonated
         cocktails, nostalgic flavours. Inspired by the creative energy of the
         Northern Quarter over the years, Upstairs is where nostalgia meets
@@ -33,7 +47,7 @@ export default function CocktailSection() {
         times.
       </p>
 
-      {/* Opening Hours Section (low key, optional) */}
+      {/* Opening Hours Section */}
       <div
         className="text-center border border-[#FF9B7A]/40 rounded-lg px-6 py-4 mb-10 max-w-md mx-auto backdrop-blur-sm"
         style={{
@@ -46,7 +60,7 @@ export default function CocktailSection() {
         <p className="text-sm leading-relaxed">
           <strong>Monday:</strong> Closed <br />
           <strong>Tuesday - Thursday:</strong> 4pm – 11:30pm <br />
-          <strong>Fridayy - Saturday:</strong> 4pm – 1:30am <br />
+          <strong>Friday - Saturday:</strong> 4pm – 1:30am <br />
           <strong>Sunday:</strong> 4pm – 11pm
         </p>
       </div>
@@ -62,28 +76,28 @@ export default function CocktailSection() {
         />
       </div>
 
-      {/* Pictures */}
+      {/* Pictures with updated borders */}
       <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Image
           src="/images/venue-images/cocktail-bar/pics/cock-bar-1.jpg"
           alt="Cocktail Bar 1"
           width={280}
           height={100}
-          className="rounded-lg border border-gray-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
+          className="rounded-lg border border-[#FF9B7A] shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
         />
         <Image
           src="/images/venue-images/cocktail-bar/pics/cock-bar-3.jpg"
           width={280}
           height={100}
           alt="Cocktail Bar 2"
-          className="rounded-lg border border-gray-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
+          className="rounded-lg border border-[#FF9B7A] shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
         />
         <Image
           src="/images/venue-images/cocktail-bar/pics/cock-bar-4.jpg"
           width={280}
           height={100}
           alt="Cocktail Bar 3"
-          className="rounded-lg border border-gray-300 shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
+          className="rounded-lg border border-[#FF9B7A] shadow-xl transform transition duration-300 hover:scale-105 hover:shadow-2xl object-cover"
         />
       </div>
 

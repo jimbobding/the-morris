@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -7,7 +9,7 @@ export default function PubSection() {
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center bg-black text-[#F1E8E0] px-4 sm:px-6 py-24"
-      id="Downstairs"
+      id="ownstairs"
     >
       {/* Title */}
       <span className="mb-8 text-4xl font-bold text-center">Downstairs</span>
@@ -44,7 +46,7 @@ export default function PubSection() {
         <p className="text-sm leading-relaxed">
           <strong>Monday:</strong> Closed <br />
           <strong>Tuesday - Thursday:</strong> 2pm – 11:30pm <br />
-          <strong>Fridayy - Saturday:</strong> 2pm – 1:30am <br />
+          <strong>Friday - Saturday:</strong> 2pm – 1:30am <br />
           <strong>Sunday:</strong> 2pm – 11pm
         </p>
       </div>

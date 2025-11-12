@@ -23,10 +23,12 @@ export default function OuterFooter() {
         href="https://www.instagram.com/themorrisvenue"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center justify-center space-x-2 text-sm md:text-base font-semibold hover:underline"
+        className="group inline-flex items-center justify-center space-x-2 text-sm md:text-base font-semibold transition-transform duration-200 hover:scale-110"
       >
-        <FaInstagram className="text-[#F4EFE9]" />
-        <span>@themorrisvenue</span>
+        <FaInstagram className="text-[#F4EFE9] group-hover:text-pink-400 transition-colors duration-200" />
+        <span className="group-hover:text-pink-400 transition-colors duration-200">
+          @themorrisvenue
+        </span>
       </Link>
     </div>
   );

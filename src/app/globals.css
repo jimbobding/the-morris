@@ -31,39 +31,27 @@ html {
   scroll-behavior: smooth;
 }
 
-.drop-shadow-neon {
-  text-shadow:
-    0 0 5px #fff,
-    0 0 10px #ff00cc,
-    0 0 15px #ff00cc;
-}
-
-@keyframes flicker {
-  0%,
-  19%,
-  21%,
-  23%,
-  25%,
-  54%,
-  56%,
+@keyframes gradientBorder {
+  0% {
+    border-color: #ff9b7a;
+  }
+  25% {
+    border-color: #ffdc7a;
+  }
+  50% {
+    border-color: #7affa1;
+  }
+  75% {
+    border-color: #7ad4ff;
+  }
   100% {
-    opacity: 1;
-  }
-  20%,
-  22%,
-  24%,
-  55% {
-    opacity: 0.5;
+    border-color: #ff9b7a;
   }
 }
 
-.neon-sign {
-  color: #facc15;
-  text-shadow:
-    0 0 5px #facc15,
-    0 0 10px #facc15,
-    0 0 20px #facc15,
-    0 0 40px #facc15;
-  animation: flicker 2s infinite;
-  font-family: "Press Start 2P", cursive; /* or other retro font */
+.paragraph-funky {
+  border: 3px solid #ff9b7a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  animation: gradientBorder 5s infinite linear;
 }

@@ -45,7 +45,7 @@ export default function MatesMorris() {
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
-      style={{ backgroundColor: "#7A8F7A", color: "#F4EFE9" }}
+      style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
       id="Mates"
     >
       <h2
