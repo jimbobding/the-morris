@@ -9,7 +9,7 @@ export default function PubSection() {
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center bg-black text-[#F1E8E0] px-4 sm:px-6 py-24"
-      id="ownstairs"
+      id="Downstairs"
     >
       {/* Title */}
       <span className="mb-8 text-4xl font-bold text-center">Downstairs</span>
