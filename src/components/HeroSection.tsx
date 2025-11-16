@@ -4,7 +4,7 @@ import { PUB_BASE } from "@/constants/imagePaths";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex justify-center items-center overflow-hidden">
+    <section className="relative min-h-screen flex justify-center items-center overflow-hidden" id="">
       {/* Background image */}
       <Image
         src="/images/venue-images/pub/backgrounds/solo_diamond_charcoal.jpg"

@@ -29,7 +29,6 @@ export default function MatesMorris() {
         setStatus("SUCCESS");
         form.reset();
 
-        // Auto-close form after 2 seconds
         setTimeout(() => {
           setIsOpen(false);
           setStatus("IDLE");
@@ -48,12 +47,7 @@ export default function MatesMorris() {
       style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
       id="Mates"
     >
-      <h2
-        className="text-4xl font-bold mb-6 text-center"
-        style={{ WebkitTextStroke: "1px rgba(0,0,0,0.6)" }}
-      >
-        Mates of Morris
-      </h2>
+      <h2 className="text-4xl font-bold mb-6 text-center">Mates of Morris</h2>
 
       <p
         className="text-center max-w-2xl mb-6"
@@ -130,12 +124,33 @@ export default function MatesMorris() {
             noValidate
           >
             <label className="flex flex-col">
-              Name
+              First Name
               <input
-                name="name"
+                name="firstName"
                 required
                 className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-                placeholder="Your name"
+                placeholder="Your first name"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              Last Name
+              <input
+                name="lastName"
+                required
+                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
+                placeholder="Your last name"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              Email
+              <input
+                name="email"
+                type="email"
+                required
+                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
+                placeholder="you@example.com"
               />
             </label>
 
@@ -147,6 +162,16 @@ export default function MatesMorris() {
                 required
                 className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
                 placeholder="Your number"
+              />
+            </label>
+
+            <label className="flex flex-col">
+              Birthday
+              <input
+                name="birthday"
+                type="date"
+                required
+                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
               />
             </label>
 
