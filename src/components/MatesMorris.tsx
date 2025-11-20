@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { MATES } from "@/constants/imagePaths";
 
@@ -10,21 +10,33 @@ export default function MatesMorris() {
     null | "IDLE" | "SENDING" | "SUCCESS" | "ERROR"
   >("IDLE");
 
+  // 🔹 Scroll to hash on page load
   useEffect(() => {
-    if (window.location.hash === "#Mates") {
-      const el = document.getElementById("Mates");
-      if (el) {
-        const header = document.querySelector("header");
-        const offset = header ? header.clientHeight : 0;
-        const top = el.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: "smooth" });
-      }
-    }
+    const hash = window.location.hash;
+    if (!hash) return;
+
+    const scrollToSection = () => {
+      const id = hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.clientHeight : 0;
+
+      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    };
+
+    requestAnimationFrame(() => {
+      scrollToSection();
+      setTimeout(scrollToSection, 50); // extra frame in case header or mobile menu
+    });
   }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("SENDING");
+
     const form = e.currentTarget;
     const data = new FormData(form);
 
@@ -38,6 +50,7 @@ export default function MatesMorris() {
       if (res.ok) {
         setStatus("SUCCESS");
         form.reset();
+
         setTimeout(() => {
           setIsOpen(false);
           setStatus("IDLE");
