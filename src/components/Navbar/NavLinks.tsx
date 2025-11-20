@@ -4,48 +4,58 @@ import { useEffect } from "react";
 
 type Props = {
   textColor: string;
-  onClick?: () => void; // optional, e.g., to close mobile menu
+  onClick?: () => void;
 };
 
 export default function NavLinks({ textColor, onClick }: Props) {
   const navLinks = [
-    { href: "#Morris", label: "The Morris" },
-    { href: "#Downstairs", label: "Downstairs" },
-    { href: "#Upstairs", label: "Upstairs" },
-    { href: "#Loft", label: "The Loft" },
-    { href: "#Mates", label: "Mates of Morris" },
+    { href: "#morris", label: "The Morris" },
+    { href: "#downstairs", label: "Downstairs" },
+    { href: "#upstairs", label: "Upstairs" },
+    { href: "#loft", label: "The Loft" },
+    { href: "#mates", label: "Mates of Morris" },
   ];
 
-  const scrollToId = (id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
+  const scrollToID = (href: string) => {
+    if (onClick) onClick(); // close mobile menu
 
-    const header = document.querySelector("header");
-    const headerHeight = header ? header.clientHeight : 0;
+    setTimeout(() => {
+      const id = href.replace("#", "");
+      const el = document.getElementById(id);
+      if (!el) return;
 
-    const y =
-      el.getBoundingClientRect().top + window.scrollY - headerHeight - 5;
+      const header = document.querySelector("nav");
+      const headerHeight = header ? header.clientHeight : 0;
 
-    // Smooth scroll
-    window.scrollTo({ top: y, behavior: "smooth" });
+      const y =
+        el.getBoundingClientRect().top + window.scrollY - headerHeight - 4;
 
-    // iOS Safari fallback
-    setTimeout(() => window.scrollTo(0, y), 50);
+      window.scrollTo({ top: y, behavior: "smooth" });
+
+      // iPhone double-scroll fix
+      setTimeout(() => {
+        window.scrollTo({ top: y });
+      }, 60);
+    }, 80);
   };
 
-  const handleClick = (href: string) => {
-    if (onClick) onClick(); // close mobile menu if applicable
-    const id = href.replace("#", "");
-    // Small delay to allow mobile menu animation to finish
-    setTimeout(() => scrollToId(id), 100);
-  };
-
-  // Scroll to hash on initial load
   useEffect(() => {
     const hash = window.location.hash;
     if (!hash) return;
+
     const id = hash.replace("#", "");
-    scrollToId(id);
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const header = document.querySelector("nav");
+    const headerHeight = header ? header.clientHeight : 0;
+
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - headerHeight - 4;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+
+    setTimeout(() => window.scrollTo({ top: y }), 80);
   }, []);
 
   return (
@@ -53,7 +63,7 @@ export default function NavLinks({ textColor, onClick }: Props) {
       {navLinks.map(({ href, label }) => (
         <li key={label}>
           <button
-            onClick={() => handleClick(href)}
+            onClick={() => scrollToID(href)}
             className="relative inline-block px-2 py-1 transition-colors duration-300 group text-left"
             style={{ color: textColor }}
           >

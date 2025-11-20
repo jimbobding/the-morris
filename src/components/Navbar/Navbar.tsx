@@ -1,16 +1,10 @@
 "use client";
 
 import Link from "next/link";
-
-import { usePathname } from "next/navigation";
-
 import { useNavbarToggle } from "../hooks/useNavbarToggle";
 import NavLinks from "./NavLinks";
 import HamburgerButton from "./HamburgerButton";
 import MobileMenu from "./MobileMenu";
-import { venueData } from "@/data/VenueData";
-
-type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 
 type NavbarProps = {
   bgColor?: string;
@@ -24,17 +18,10 @@ export default function Navbar({
   navbarBorderColor,
 }: NavbarProps) {
   const { isOpen, toggle, close } = useNavbarToggle();
-  const pathname = usePathname();
 
-  const segments = pathname.split("/");
-  const venueSlug =
-    segments[1] === "venues" ? (segments[2] as VenueSlug) : "default";
-
-  const venueInfo = venueData[venueSlug] || venueData.landing;
-
-  const bg = bgColor || venueInfo.backgroundColor || "#000";
-  const text = textColor || venueInfo.textColor || "#fff";
-  const border = navbarBorderColor || venueInfo.borderColor || "#ccc";
+  const bg = bgColor || "#000";
+  const text = textColor || "#fff";
+  const border = navbarBorderColor || "#ccc";
 
   return (
     <nav
@@ -46,21 +33,17 @@ export default function Navbar({
       }}
     >
       <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        {/* Logo / Brand */}
         <div className="text-lg font-semibold tracking-wide">
           <Link href="/">The Morris</Link>
         </div>
 
-        {/* Hamburger button for mobile */}
         <HamburgerButton isOpen={isOpen} toggle={toggle} />
 
-        {/* Desktop Links */}
         <ul className="hidden md:flex space-x-6 text-sm">
-          <NavLinks targetSlug={venueSlug} textColor={text} />
+          <NavLinks textColor={text} />
         </ul>
       </div>
 
-      {/* Mobile Menu Dropdown */}
       {isOpen && <MobileMenu close={close} />}
     </nav>
   );

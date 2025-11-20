@@ -10,7 +10,7 @@ export default function CocktailSection() {
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#72233F", color: "#FF9B7A" }}
-      id="Upstairs"
+      id="upstairs"
     >
       {/* Title */}
       <span className="text-4xl font-bold text-center mb-8">Upstairs</span>

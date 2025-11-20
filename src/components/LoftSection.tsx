@@ -44,7 +44,7 @@ export default function LoftSection() {
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#BDBDB2", color: "#000000" }}
-      id="Loft"
+      id="loft"
     >
       <h2 className="text-4xl font-bold mb-6 text-center">The Loft</h2>
 

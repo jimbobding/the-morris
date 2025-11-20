@@ -56,7 +56,7 @@ export default function MatesMorris() {
 
   return (
     <section
-      id="Mates"
+      id="mates"
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
     >
