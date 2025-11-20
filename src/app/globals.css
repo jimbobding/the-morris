@@ -55,3 +55,11 @@ html {
   padding: 1.5rem;
   animation: gradientBorder 5s infinite linear;
 }
+
+#Mates,
+#Loft,
+#Downstairs,
+#Upstairs,
+#Morris {
+  scroll-margin-top: 76px; /* tweak as needed */
+}

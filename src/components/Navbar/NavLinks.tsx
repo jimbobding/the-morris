@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -12,7 +11,7 @@ type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
 type Props = {
   targetSlug: VenueSlug;
   textColor: string;
-  onClick?: () => void;
+  onClick?: () => void; // called to close mobile menu
 };
 
 export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
@@ -34,17 +33,39 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
     { href: "#Mates", label: "Mates of Morris" },
   ];
 
+  const handleHashScroll = (href: string) => {
+    if (onClick) onClick(); // close mobile menu first
+
+    const scrollToId = () => {
+      const id = href.slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.clientHeight : 0;
+
+      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({ top: y, behavior: "smooth" });
+    };
+
+    // Wait for DOM & layout to settle
+    requestAnimationFrame(() => {
+      scrollToId();
+      setTimeout(scrollToId, 50); // extra frame for mobile menu animations
+    });
+  };
+
   return (
     <>
       {navLinks.map(({ href, label }) => {
-        // 🔥 ALWAYS show hash links
+        // Hash links use button for smooth scroll
         if (href.startsWith("#")) {
           return (
             <li key={label}>
-              <a
-                href={href}
-                onClick={onClick}
-                className="relative inline-block px-2 py-1 transition-colors duration-300 group"
+              <button
+                onClick={() => handleHashScroll(href)}
+                className="relative inline-block px-2 py-1 transition-colors duration-300 group text-left"
                 style={
                   {
                     color: textColor,
@@ -54,15 +75,15 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
               >
                 {label}
                 <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
-              </a>
+              </button>
             </li>
           );
         }
 
-        // Normal Next.js route link
+        // Regular Next.js links
         return (
           <li key={label}>
-            <Link
+            <a
               href={href}
               onClick={onClick}
               className="relative inline-block px-2 py-1 transition-colors duration-300 group"
@@ -75,7 +96,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
             >
               {label}
               <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
-            </Link>
+            </a>
           </li>
         );
       })}
@@ -83,11 +104,11 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
       {/* Venue swap logo */}
       {pathname.startsWith("/venues") && (
         <li>
-          <Link
-            href={`/venues/${targetSlug === "pub" ? "cocktail-bar" : "pub"}`}
+          <button
             className="block w-[120px] h-[40px] relative"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            onClick={onClick} // close mobile menu if clicked
           >
             <Image
               src={logoSrc}
@@ -95,7 +116,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
               fill
               className="object-contain"
             />
-          </Link>
+          </button>
         </li>
       )}
     </>
