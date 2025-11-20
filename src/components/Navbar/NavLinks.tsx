@@ -1,30 +1,13 @@
 "use client";
 
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { LOGOS } from "@/constants/imagePaths";
-import { venueData } from "@/data/VenueData";
-
-type VenueSlug = "pub" | "cocktail-bar" | "private-hire" | "default";
+import { useEffect } from "react";
 
 type Props = {
-  targetSlug: VenueSlug;
   textColor: string;
-  onClick?: () => void; // called to close mobile menu
+  onClick?: () => void; // optional, e.g., to close mobile menu
 };
 
-export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
-  const pathname = usePathname();
-  const [isHovered, setIsHovered] = useState(false);
-
-  const venueInfo = venueData[targetSlug];
-  const hoverColor =
-    venueInfo?.hoverColor || venueInfo?.borderColor || "#FFB6C1";
-
-  const currentLogos = LOGOS[targetSlug] || LOGOS.default;
-  const logoSrc = isHovered ? currentLogos.hover : currentLogos.default;
-
+export default function NavLinks({ textColor, onClick }: Props) {
   const navLinks = [
     { href: "#Morris", label: "The Morris" },
     { href: "#Downstairs", label: "Downstairs" },
@@ -33,92 +16,52 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
     { href: "#Mates", label: "Mates of Morris" },
   ];
 
-  const handleHashScroll = (href: string) => {
-    if (onClick) onClick(); // close mobile menu first
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-    const scrollToId = () => {
-      const id = href.slice(1);
-      const el = document.getElementById(id);
-      if (!el) return;
+    const header = document.querySelector("header");
+    const headerHeight = header ? header.clientHeight : 0;
 
-      const header = document.querySelector("header");
-      const headerHeight = header ? header.clientHeight : 0;
+    const y =
+      el.getBoundingClientRect().top + window.scrollY - headerHeight - 5;
 
-      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+    // Smooth scroll
+    window.scrollTo({ top: y, behavior: "smooth" });
 
-      window.scrollTo({ top: y, behavior: "smooth" });
-    };
-
-    // Wait for DOM & layout to settle
-    requestAnimationFrame(() => {
-      scrollToId();
-      setTimeout(scrollToId, 50); // extra frame for mobile menu animations
-    });
+    // iOS Safari fallback
+    setTimeout(() => window.scrollTo(0, y), 50);
   };
+
+  const handleClick = (href: string) => {
+    if (onClick) onClick(); // close mobile menu if applicable
+    const id = href.replace("#", "");
+    // Small delay to allow mobile menu animation to finish
+    setTimeout(() => scrollToId(id), 100);
+  };
+
+  // Scroll to hash on initial load
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const id = hash.replace("#", "");
+    scrollToId(id);
+  }, []);
 
   return (
     <>
-      {navLinks.map(({ href, label }) => {
-        // Hash links use button for smooth scroll
-        if (href.startsWith("#")) {
-          return (
-            <li key={label}>
-              <button
-                onClick={() => handleHashScroll(href)}
-                className="relative inline-block px-2 py-1 transition-colors duration-300 group text-left"
-                style={
-                  {
-                    color: textColor,
-                    "--hover-color": hoverColor,
-                  } as React.CSSProperties
-                }
-              >
-                {label}
-                <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
-              </button>
-            </li>
-          );
-        }
-
-        // Regular Next.js links
-        return (
-          <li key={label}>
-            <a
-              href={href}
-              onClick={onClick}
-              className="relative inline-block px-2 py-1 transition-colors duration-300 group"
-              style={
-                {
-                  color: textColor,
-                  "--hover-color": hoverColor,
-                } as React.CSSProperties
-              }
-            >
-              {label}
-              <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
-            </a>
-          </li>
-        );
-      })}
-
-      {/* Venue swap logo */}
-      {pathname.startsWith("/venues") && (
-        <li>
+      {navLinks.map(({ href, label }) => (
+        <li key={label}>
           <button
-            className="block w-[120px] h-[40px] relative"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            onClick={onClick} // close mobile menu if clicked
+            onClick={() => handleClick(href)}
+            className="relative inline-block px-2 py-1 transition-colors duration-300 group text-left"
+            style={{ color: textColor }}
           >
-            <Image
-              src={logoSrc}
-              alt="venue logo"
-              fill
-              className="object-contain"
-            />
+            {label}
+            <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-current transition-all duration-300 group-hover:w-full" />
           </button>
         </li>
-      )}
+      ))}
     </>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { MATES } from "@/constants/imagePaths";
 
@@ -9,29 +9,6 @@ export default function MatesMorris() {
   const [status, setStatus] = useState<
     null | "IDLE" | "SENDING" | "SUCCESS" | "ERROR"
   >("IDLE");
-
-  // 🔹 Scroll to hash on page load
-  useEffect(() => {
-    const hash = window.location.hash;
-    if (!hash) return;
-
-    const scrollToSection = () => {
-      const id = hash.replace("#", "");
-      const el = document.getElementById(id);
-      if (!el) return;
-
-      const header = document.querySelector("header");
-      const headerHeight = header ? header.clientHeight : 0;
-
-      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
-      window.scrollTo({ top: y, behavior: "smooth" });
-    };
-
-    requestAnimationFrame(() => {
-      scrollToSection();
-      setTimeout(scrollToSection, 50); // extra frame in case header or mobile menu
-    });
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -50,7 +27,6 @@ export default function MatesMorris() {
       if (res.ok) {
         setStatus("SUCCESS");
         form.reset();
-
         setTimeout(() => {
           setIsOpen(false);
           setStatus("IDLE");
@@ -63,25 +39,34 @@ export default function MatesMorris() {
     }
   };
 
+  // Scroll to Mates section if URL has hash on mount
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === "#Mates") {
+      const el = document.getElementById("Mates");
+      if (!el) return;
+      const header = document.querySelector("header");
+      const headerHeight = header ? header.clientHeight : 0;
+      const y =
+        el.getBoundingClientRect().top + window.scrollY - headerHeight - 5;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      setTimeout(() => window.scrollTo(0, y), 50);
+    }
+  }, []);
+
   return (
     <section
-      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       id="Mates"
+      className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
       style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
     >
       <h2 className="text-4xl font-bold mb-6 text-center">Mates of Morris</h2>
-
       <p
         className="text-center max-w-2xl mb-6"
         style={{ WebkitTextStroke: "0.5px rgba(0,0,0,0.5)" }}
       >
         Mates of Morris is a little club for our regulars and the ones who feel
-        like they already are. Mates of Morris is our way of saying thanks — a
-        nod to the familiar faces, the friends who bring friends, and the ones
-        who make this place what it is. Members get first word on events,
-        special menus, and the odd perk or two (including our Sunday offer).
-        It&apos;s not a loyalty card — it&apos;s more of a handshake. Sign up,
-        stay in the loop, and become a proper mate of The Morris.
+        like they already are...
       </p>
 
       <div className="mb-12">
@@ -145,58 +130,34 @@ export default function MatesMorris() {
             className="flex flex-col gap-4"
             noValidate
           >
-            <label className="flex flex-col">
-              First Name
-              <input
-                name="firstName"
-                required
-                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-                placeholder="Your first name"
-              />
-            </label>
-
-            <label className="flex flex-col">
-              Last Name
-              <input
-                name="lastName"
-                required
-                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-                placeholder="Your last name"
-              />
-            </label>
-
-            <label className="flex flex-col">
-              Email
-              <input
-                name="email"
-                type="email"
-                required
-                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-                placeholder="you@example.com"
-              />
-            </label>
-
-            <label className="flex flex-col">
-              Phone Number
-              <input
-                name="phone"
-                type="tel"
-                required
-                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-                placeholder="Your number"
-              />
-            </label>
-
-            <label className="flex flex-col">
-              Birthday
-              <input
-                name="birthday"
-                type="date"
-                required
-                className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
-              />
-            </label>
-
+            {["firstName", "lastName", "email", "phone", "birthday"].map(
+              (field) => (
+                <label key={field} className="flex flex-col">
+                  {field === "phone"
+                    ? "Phone Number"
+                    : field.charAt(0).toUpperCase() + field.slice(1)}
+                  <input
+                    name={field}
+                    type={
+                      field === "email"
+                        ? "email"
+                        : field === "birthday"
+                          ? "date"
+                          : "text"
+                    }
+                    required
+                    className="border border-[#F4EFE9] bg-transparent text-[#F4EFE9] p-2 rounded placeholder-[#F4EFE9]"
+                    placeholder={
+                      field === "email"
+                        ? "you@example.com"
+                        : field === "birthday"
+                          ? ""
+                          : `Your ${field}`
+                    }
+                  />
+                </label>
+              )
+            )}
             <div className="flex items-center gap-3">
               <button
                 type="submit"
@@ -205,7 +166,6 @@ export default function MatesMorris() {
               >
                 {status === "SENDING" ? "Sending..." : "Submit"}
               </button>
-
               {status === "SUCCESS" && (
                 <span className="text-[#F4EFE9] font-semibold">
                   ✅ Sent — cheers mate!
