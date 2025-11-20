@@ -19,7 +19,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
 
-  const venueInfo = venueData[targetSlug as keyof typeof venueData];
+  const venueInfo = venueData[targetSlug];
   const hoverColor =
     venueInfo?.hoverColor || venueInfo?.borderColor || "#FFB6C1";
 
@@ -37,8 +37,29 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
   return (
     <>
       {navLinks.map(({ href, label }) => {
-        if (href.startsWith("#") && !pathname.startsWith("/")) return null;
+        // 🔥 ALWAYS show hash links
+        if (href.startsWith("#")) {
+          return (
+            <li key={label}>
+              <a
+                href={href}
+                onClick={onClick}
+                className="relative inline-block px-2 py-1 transition-colors duration-300 group"
+                style={
+                  {
+                    color: textColor,
+                    "--hover-color": hoverColor,
+                  } as React.CSSProperties
+                }
+              >
+                {label}
+                <span className="absolute left-0 -bottom-0.5 h-[2px] w-0 bg-[var(--hover-color)] transition-all duration-300 group-hover:w-full" />
+              </a>
+            </li>
+          );
+        }
 
+        // Normal Next.js route link
         return (
           <li key={label}>
             <Link
@@ -59,7 +80,7 @@ export default function NavLinks({ targetSlug, textColor, onClick }: Props) {
         );
       })}
 
-      {/* Optional venue swap logo */}
+      {/* Venue swap logo */}
       {pathname.startsWith("/venues") && (
         <li>
           <Link

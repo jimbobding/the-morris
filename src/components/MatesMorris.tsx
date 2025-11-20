@@ -44,8 +44,8 @@ export default function MatesMorris() {
   return (
     <section
       className="min-h-screen flex flex-col justify-center items-center px-4 sm:px-6 py-24"
-      style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
       id="Mates"
+      style={{ backgroundColor: "#19464a", color: "#a8cab6" }}
     >
       <h2 className="text-4xl font-bold mb-6 text-center">Mates of Morris</h2>
 
