@@ -39,18 +39,30 @@ export default function MatesMorris() {
     }
   };
 
-  // Scroll to Mates section if URL has hash on mount
+  // Scroll to mates section if URL has hash on mount
+
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash === "#Mates") {
-      const el = document.getElementById("Mates");
+    const scrollToMates = () => {
+      if (window.location.hash !== "#mates") return;
+
+      const el = document.getElementById("mates");
       if (!el) return;
-      const header = document.querySelector("header");
+
+      const header = document.querySelector("nav");
       const headerHeight = header ? header.clientHeight : 0;
-      const y =
-        el.getBoundingClientRect().top + window.scrollY - headerHeight - 5;
+
+      const y = el.getBoundingClientRect().top + window.scrollY - headerHeight;
+
       window.scrollTo({ top: y, behavior: "smooth" });
-      setTimeout(() => window.scrollTo(0, y), 50);
+    };
+
+    // If the page is already fully loaded
+    if (document.readyState === "complete") {
+      scrollToMates();
+    } else {
+      // Wait until everything (images too) is loaded
+      window.addEventListener("load", scrollToMates);
+      return () => window.removeEventListener("load", scrollToMates);
     }
   }, []);
 
