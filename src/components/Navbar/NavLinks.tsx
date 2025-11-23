@@ -13,54 +13,58 @@ export default function NavLinks({ textColor, onClick }: Props) {
     { href: "#downstairs", label: "Downstairs" },
     { href: "#upstairs", label: "Upstairs" },
     { href: "#loft", label: "The Loft" },
-    { href: "#mates", label: "Mates of Morris" },
   ];
 
-  // Scroll to the target section
+  // -------------------------
+  // SCROLL FUNCTION
+  // -------------------------
   const scrollToHash = (hash: string) => {
-    const id = hash.replace("#", "");
+    const id = hash.replace("#", "").toLowerCase();
     const el = document.getElementById(id);
     if (!el) return;
 
-    // Measure nav height dynamically
     const nav = document.querySelector("nav");
     const navHeight = nav ? nav.clientHeight : 0;
 
-    // Pixel-perfect target Y
-    const targetY = el.offsetTop - navHeight;
+    // THE FIX — do not change this line
+    const targetY = el.offsetTop - navHeight - 4;
 
-    // Debug logging
-    console.log("NAV CLICK:", hash);
-    console.log("Resolved ID:", id);
-    console.log("Element found:", !!el);
-    console.log("Element offsetTop:", el.offsetTop);
-    console.log("Navbar height:", navHeight);
-    console.log("Scroll targetY:", targetY);
+    console.log("Scrolling to:", id);
+    console.log("el.offsetTop:", el.offsetTop);
+    console.log("navHeight:", navHeight);
+    console.log("targetY:", targetY);
 
-    // Smooth scroll
     window.scrollTo({ top: targetY, behavior: "smooth" });
   };
 
-  // Handle hash in URL on first load
+  // -------------------------
+  // SCROLL ON PAGE LOAD IF HASH EXISTS
+  // -------------------------
   useEffect(() => {
-    if (window.location.hash) {
-      const hash = window.location.hash.toLowerCase();
-      console.log("Initial hash detected:", hash);
+    const handleLoad = () => {
+      if (window.location.hash) scrollToHash(window.location.hash); // <-- fixed function name
+    };
 
-      // Delay scroll slightly to wait for layout
-      setTimeout(() => scrollToHash(hash), 50);
+    if (document.readyState === "complete") {
+      handleLoad();
+    } else {
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
     }
   }, []);
 
+  // -------------------------
+  // RENDER NAV LINKS
+  // -------------------------
   return (
     <>
       {navLinks.map(({ href, label }) => (
         <li key={label}>
           <button
             onClick={(e) => {
-              e.preventDefault(); // Prevent native browser jump
+              e.preventDefault(); // prevent native jump
               scrollToHash(href);
-              if (onClick) onClick(); // close mobile menu
+              if (onClick) onClick(); // close mobile menu if needed
             }}
             className="relative inline-block px-2 py-1 transition-colors duration-300 group text-left"
             style={{ color: textColor }}
