@@ -100,7 +100,7 @@ export default function PubSection() {
 
       {/* Menu link */}
       <Link
-        href={`${PUB_BASE}/menu/PUB_MENU_30.10.25.pdf`}
+        href={`${PUB_BASE}/menu/PUB_MENU_03.12.25pdf`}
         target="_blank"
         className="mt-4 inline-block bg-[#F1E8E0] text-black font-semibold py-3 px-6 rounded-lg hover:bg-black hover:text-white transition-colors duration-300"
       >
