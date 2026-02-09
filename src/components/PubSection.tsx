@@ -24,13 +24,18 @@ export default function PubSection() {
       </div>
 
       {/* Paragraph */}
-      <p className="text-center max-w-2xl mb-6">
+      <p className="text-center max-w-2xl mb-4">
         Our ground floor is everything a pub should be — familiar, welcoming and
         full of character. We pour the best of Manchester&apos;s brewing scene
         alongside a great pint of Guinness and a carbonated spritz on tap, all
         set to an easy-going soundtrack that keeps the conversation flowing,
-        whether it&apos;s a quiet midweek pint or a busy Saturday catch-up,
+        whether it&apos;s a quiet midweek pint or a busy Saturday catch-up.
         Downstairs is where The Morris comes alive.
+      </p>
+
+      {/* Caveat */}
+      <p className="text-center max-w-xl text-sm text-[#F1E8E0]/70 italic mb-6">
+        Downstairs operates as a walk-in only venue — we do not take bookings.
       </p>
 
       {/* Opening Hours Section */}
