@@ -57,7 +57,7 @@ export default function HomePage() {
           <p className="text-sm leading-relaxed">
             <strong>Monday:</strong> Closed <br />
             <strong>Tuesday - Thursday:</strong> 4pm – 11:30pm <br />
-            <strong>Friday - Saturday:</strong> 4pm – 1:30am <br />
+            <strong>Friday - Saturday:</strong> 4pm – 1am <br />
             <strong>Sunday:</strong> 4pm – 11pm
           </p>
         </div>
