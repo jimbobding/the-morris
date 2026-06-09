@@ -50,8 +50,8 @@ export default function PubSection() {
         </h3>
         <p className="text-sm leading-relaxed">
           <strong>Monday:</strong> Closed <br />
-          <strong>Tuesday - Wednesday:</strong> 4pm – 10:30pm <br />
-          <strong> Thursday:</strong> 4pm – 11:30pm <br />
+          <strong>Tuesday - Wednesday:</strong> 2pm – 10:30pm <br />
+          <strong> Thursday:</strong> 2pm – 11:30pm <br />
           <strong>Friday - Saturday:</strong> 2pm – 1am <br />
           <strong>Sunday:</strong> 2pm – 10:30pm
         </p>
