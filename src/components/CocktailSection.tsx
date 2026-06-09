@@ -56,10 +56,10 @@ export default function HomePage() {
           </h3>
           <p className="text-sm leading-relaxed">
             <strong>Monday:</strong> Closed <br />
-            <strong>Tuesday - Thursday:</strong> 2pm – 10:30pm <br />
-            <strong> Thursday:</strong> 2pm – 11:30pm <br />
-            <strong>Friday - Saturday:</strong> 2pm – 1am <br />
-            <strong>Sunday:</strong> 2pm – 10:30pm
+            <strong>Tuesday - Thursday:</strong> 4pm – 10:30pm <br />
+            <strong> Thursday:</strong> 4pm – 11:30pm <br />
+            <strong>Friday - Saturday:</strong> 4pm – 1am <br />
+            <strong>Sunday:</strong> 4pm – 10:30pm
           </p>
         </div>
 
@@ -112,7 +112,7 @@ export default function HomePage() {
 
         {/* Menu link */}
         <Link
-          href={`${COCKTAIL_BASE}/menu/FUNKY_VOL2_18.05.26_website.pdf`}
+          href={`${COCKTAIL_BASE}/menu/FUNKY_VOL1_23.09.25.pdf`}
           target="_blank"
           className="mt-4 inline-block bg-[#FF9B7A] text-[#72233F] font-semibold py-3 px-6 rounded-lg hover:bg-[#72233F] hover:text-[#FF9B7A] transition-colors duration-300"
         >
