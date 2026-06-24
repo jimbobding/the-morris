@@ -112,7 +112,8 @@ export default function HomePage() {
 
         {/* Menu link */}
         <Link
-          href={`${COCKTAIL_BASE}/menu/FUNKY_VOL1_23.09.25.pdf`}
+          href={`${COCKTAIL_BASE}/menu/FUNKY_VOL2_18.05.26_website.pdf
+`}
           target="_blank"
           className="mt-4 inline-block bg-[#FF9B7A] text-[#72233F] font-semibold py-3 px-6 rounded-lg hover:bg-[#72233F] hover:text-[#FF9B7A] transition-colors duration-300"
         >
