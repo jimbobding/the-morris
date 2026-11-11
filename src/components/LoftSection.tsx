@@ -113,15 +113,27 @@ export default function LoftSection() {
               <input name="name" required className="border p-2 rounded" />
             </label>
 
-            <label className="flex flex-col">
-              Email
-              <input
-                name="email"
-                type="email"
-                required
-                className="border p-2 rounded"
-              />
-            </label>
+    <label className="flex flex-col">
+  Email
+  <input
+    name="email"
+    type="email"
+    required
+    className="border p-2 rounded"
+  />
+</label>
+
+<label className="flex flex-col">
+  Phone Number
+  <input
+    name="phone"
+    type="tel"
+    placeholder="e.g. 07123 456789"
+    autoComplete="tel"
+    required
+    className="border p-2 rounded"
+  />
+</label>
 
             <label className="flex flex-col">
               Number of Guests (max 40)
